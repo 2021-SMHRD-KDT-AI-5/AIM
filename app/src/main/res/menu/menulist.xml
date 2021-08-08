@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/check"
+        android:icon="@drawable/cctv"
+        android:title="아이확인" />
+    <item
+        android:id="@+id/sound"
+        android:icon="@drawable/sound"
+        android:title="아이소리" />
+    <item
+        android:id="@+id/diary"
+        android:icon="@drawable/diary"
+        android:title="육아일지" />
+    <item
+        android:id="@+id/myinfo"
+        android:icon="@drawable/info"
+        android:title="내정보" />
+</menu>
