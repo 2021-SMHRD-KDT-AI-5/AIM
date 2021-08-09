@@ -8,6 +8,7 @@ mp_pose = mp.solutions.pose
 counter = 0 
 stage = None
 time = 0
+k=0
 
 left_elbow_list = []
 right_elbow_list = []
