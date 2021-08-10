@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class JoinActivity extends AppCompatActivity {
     ImageView img_back;
-    EditText edt_id, edt_pw, edt_email, edt_ip;
+    EditText edt_id, edt_pw, edt_email, edt_ip, edt_baby_name, edt_baby_birthday;
     Button join_ok;
 
     DBManager manager;
@@ -26,6 +26,8 @@ public class JoinActivity extends AppCompatActivity {
         edt_pw = findViewById(R.id.edt_pw);
         edt_email = findViewById(R.id.edt_email);
         edt_ip = findViewById(R.id.edt_ip);
+        edt_baby_name = findViewById(R.id.edt_baby_name);
+        edt_baby_birthday = findViewById(R.id.edt_baby_birtday);
         join_ok = findViewById(R.id.join_ok);
 
         manager = new DBManager(getApplicationContext()); // 회원가입을 위한 DBManager객체 생성
@@ -45,8 +47,11 @@ public class JoinActivity extends AppCompatActivity {
                 String pw = edt_pw.getText().toString();
                 String email = edt_email.getText().toString();
                 String ip = edt_ip.getText().toString();
+                String babyName = edt_baby_name.getText().toString();
+                String babyBirthday = edt_baby_birthday.getText().toString();
 
                 manager.join(id, pw, email, ip); // 회원가입 메소드
+                manager.baby_join(id, babyName, babyBirthday); // 아기 정보 저장 메소드
 
                 Toast.makeText(getApplicationContext(),"회원가입에 성공하셨습니다! 가입하신 아이디로 로그인해보세요.",Toast.LENGTH_LONG).show();
                 Intent it = new Intent();

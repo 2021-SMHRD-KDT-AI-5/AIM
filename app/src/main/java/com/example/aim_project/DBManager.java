@@ -16,6 +16,13 @@ public class DBManager {
         db.execSQL("insert into aim_members values('"+ id +"','"+ pw +"','"+ email +"','"+ ip +"')");
     }
 
+    // 아기 정보 신규 저장 메소드
+    public void baby_join(String id, String babyName, String babyBirthday){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("insert into baby_info values('"+ id +"','"+ babyName +"','"+ babyBirthday +"')");
+    }
+
+    // 로그인 메소드
     public boolean login(String id, String pw){
         SQLiteDatabase db = helper.getReadableDatabase();
 

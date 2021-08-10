@@ -29,6 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE baby_diary(\n" +
                 "member_id VARCHAR2(30) NOT NULL,\n" +
+                "baby_name VARCHAR2(30) NOT NULL,\n" +
                 "diary_date VARCHAR2(30) NOT NULL,\n" +
                 "title VARCHAR2(200) NOT NULL,\n" +
                 "contents VARCHAR2(3000),\n" +
