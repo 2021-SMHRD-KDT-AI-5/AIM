@@ -10,12 +10,26 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class JoinActivity extends AppCompatActivity {
     ImageView img_back;
     EditText edt_id, edt_pw, edt_email, edt_ip, edt_baby_name, edt_baby_birthday;
     Button join_ok;
 
-    DBManager manager;
+    RequestQueue requestQueue; // DB 연결시 필수 생성 객체
+    StringRequest stringRequest_join; // 회원가입 알고리즘
+
+//    DBManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +44,45 @@ public class JoinActivity extends AppCompatActivity {
         edt_baby_birthday = findViewById(R.id.edt_baby_birtday);
         join_ok = findViewById(R.id.join_ok);
 
-        manager = new DBManager(getApplicationContext()); // 회원가입을 위한 DBManager객체 생성
+//        manager = new DBManager(getApplicationContext()); // 회원가입을 위한 DBManager객체 생성
+
+        // requestQueue 생성
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        // stringRequest생성
+        // 객체 생성 시 매개변수 4개
+        stringRequest_join = new StringRequest(Request.Method.POST, "http://172.30.1.15:8090/AIM_DBServer/JoinServlet",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답을 처리하는 메소드
+                        if (response.equals("11")){
+                            Toast.makeText(getApplicationContext(),"회원가입 완료! 가입하신 아이디로 로그인해보세요!",Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getApplicationContext(),"뭔가 잘못됐습니다",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // 에러 감지
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("id", edt_id.getText().toString());
+                params.put("pw", edt_pw.getText().toString());
+                params.put("email", edt_email.getText().toString());
+                params.put("ip", edt_ip.getText().toString());
+                params.put("babyName", edt_baby_name.getText().toString());
+                params.put("babyBirthday", edt_baby_birthday.getText().toString());
+
+                return params;
+            }
+        };
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,20 +92,14 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
 
+        // join버튼 눌렀을 때 requestQueue에 StringRequest 전송
         join_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = edt_id.getText().toString();
-                String pw = edt_pw.getText().toString();
-                String email = edt_email.getText().toString();
-                String ip = edt_ip.getText().toString();
-                String babyName = edt_baby_name.getText().toString();
-                String babyBirthday = edt_baby_birthday.getText().toString();
+                requestQueue.add(stringRequest_join);
+//                manager.join(id, pw, email, ip); // 회원가입 메소드
+//                manager.baby_join(id, babyName, babyBirthday); // 아기 정보 저장 메소드
 
-                manager.join(id, pw, email, ip); // 회원가입 메소드
-                manager.baby_join(id, babyName, babyBirthday); // 아기 정보 저장 메소드
-
-                Toast.makeText(getApplicationContext(),"회원가입에 성공하셨습니다! 가입하신 아이디로 로그인해보세요.",Toast.LENGTH_LONG).show();
                 Intent it = new Intent();
                 finish();
 
