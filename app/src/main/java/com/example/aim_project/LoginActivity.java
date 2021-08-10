@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     StringRequest stringRequest_login; // 로그인 알고리즘
 
-//    DBManager manager; // 로그인을 위한 DBManager 객체 생성
+//    DBManager manager; // 로그인을 위한 DBManager 객체 생성 맨
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
