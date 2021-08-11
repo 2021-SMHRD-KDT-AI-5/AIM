@@ -28,6 +28,7 @@ public class JoinServlet extends HttpServlet {
 		int result1 = memberDao.join(id, pw, email, ip);
 		int result2 = babyDao.join(id, babyName, birthday);
 		PrintWriter writer = response.getWriter();
+		
 		writer.print(result1);
 		writer.print(result2);
 		
