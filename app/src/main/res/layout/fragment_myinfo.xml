@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF0E8"
+    android:backgroundTint="#FFF0E8"
     tools:context=".FragmentMyinfo">
 
     <!-- TODO: Update blank fragment layout -->
@@ -27,21 +28,183 @@
         android:layout_height="29dp"
         android:src="@drawable/reft"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView6"
-        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="222dp"
-        android:layout_height="288dp"
-        android:text="내정보 확인하는 화면"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="12dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:gravity="center|left"
+        android:text="  내정보 조회/변경"
+        android:textColor="#615B5B"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:gravity="center|left"
+        android:text="  가입한 보험 정보"
+        android:textColor="#615B5B"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_1" />
+
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:gravity="center|left"
+        android:text="  정액권 신청/해지"
+        android:textColor="#615B5B"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_2" />
+
+    <Button
+        android:id="@+id/btn_4"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:gravity="center|left"
+        android:text="  문의/사고 접수"
+        android:textColor="#615B5B"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_3" />
+
+    <Button
+        android:id="@+id/btn_5"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="72dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:gravity="center|left"
+        android:text="  시스템 설정"
+        android:textColor="#615B5B"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_3" />
+
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:gravity="center|left"
+        android:text="  서비스 소개"
+        android:textColor="#615B5B"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_5" />
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:src="@drawable/img_test1"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_1"
+        app:layout_constraintEnd_toStartOf="@+id/btn_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/btn_1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="65dp" />
+
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:src="@drawable/img2"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img1" />
+
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:src="@drawable/img3"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img2" />
+
+    <ImageView
+        android:id="@+id/img4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:src="@drawable/img6"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/img5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:src="@drawable/img4"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img4" />
+
+    <ImageView
+        android:id="@+id/img6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFF0E8"
+        android:backgroundTint="#FFF0E8"
+        android:src="@drawable/img5"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_6"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

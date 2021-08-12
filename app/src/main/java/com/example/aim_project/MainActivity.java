@@ -15,7 +15,12 @@ public class MainActivity extends AppCompatActivity {
     FragmentMyinfo fragmentMyinfo;
     FragmentSound fragmentSound;
     FragmentMain fragmentMain;
-
+    FragmentMyinfo_1_ fragmentMyinfo_1_;
+    FragmentMyinfo_2_ fragmentMyinfo_2_;
+    FragmentMyinfo_3_ fragmentMyinfo_3_;
+    FragmentMyinfo_4_ fragmentMyinfo_4_;
+    FragmentMyinfo_5_ fragmentMyinfo_5_;
+    FragmentMyinfo_6_ fragmentMyinfo_6_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentMyinfo = new FragmentMyinfo();
         fragmentSound = new FragmentSound();
         fragmentMain = new FragmentMain();
+        fragmentMyinfo_1_ = new FragmentMyinfo_1_();
+        fragmentMyinfo_2_ = new FragmentMyinfo_2_();
+        fragmentMyinfo_3_ = new FragmentMyinfo_3_();
+        fragmentMyinfo_4_ = new FragmentMyinfo_4_();
+        fragmentMyinfo_5_ = new FragmentMyinfo_5_();
+        fragmentMyinfo_6_ = new FragmentMyinfo_6_();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container,fragmentMain).commit();
