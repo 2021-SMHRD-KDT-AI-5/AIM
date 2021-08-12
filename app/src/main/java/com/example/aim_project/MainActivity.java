@@ -11,7 +11,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bnv;
     FragmentCamera fragmentCamera;
-    FragmentDiary fragmentDiary;
+//    FragmentDiary fragmentDiary;
+    FragmentDiary_1 fragmentDiary_1;
     FragmentMyinfo fragmentMyinfo;
     FragmentSound fragmentSound;
     FragmentMain fragmentMain;
@@ -28,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bnv = findViewById(R.id.bottonbar);
         fragmentCamera = new FragmentCamera();
-        fragmentDiary = new FragmentDiary();
+//        fragmentDiary = new FragmentDiary();
+        fragmentDiary_1 = new FragmentDiary_1();
         fragmentMyinfo = new FragmentMyinfo();
         fragmentSound = new FragmentSound();
         fragmentMain = new FragmentMain();
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.diary:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container,fragmentDiary).commit();
+                                .replace(R.id.container,fragmentDiary_1).commit();
                         break;
                     case R.id.myinfo:
                         getSupportFragmentManager().beginTransaction()
