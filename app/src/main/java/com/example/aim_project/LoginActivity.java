@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //        manager = new DBManager(getApplicationContext()); // 로그인을 위한 DBManager 객체 생성
 
-        stringRequest_login = new StringRequest(Request.Method.POST, "http://172.30.1.15:8090/AIM_DBServer/LoginServlet",
+        stringRequest_login = new StringRequest(Request.Method.POST, "http://172.30.1.1:8086/AIM_DBServer/LoginServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

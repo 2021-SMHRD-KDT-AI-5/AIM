@@ -51,7 +51,7 @@ public class JoinActivity extends AppCompatActivity {
 
         // stringRequest생성
         // 객체 생성 시 매개변수 4개
-        stringRequest_join = new StringRequest(Request.Method.POST, "http://172.30.1.15:8090/AIM_DBServer/JoinServlet",
+        stringRequest_join = new StringRequest(Request.Method.POST, "http://172.30.1.1:8086/AIM_DBServer/JoinServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
