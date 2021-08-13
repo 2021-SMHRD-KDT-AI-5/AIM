@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="test2">
+        <item> 보험이름 </item>
+        <item> 아이성장보험 </item>
+        <item> 우리어린이보험 </item>
+        <item> 어린이안심보험 </item>
+        <item> 태아보험 </item>
+        <item> 직접입력 </item>
+    </string-array>
+
+</resources>

@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF0E8"
-    tools:context=".FragmentMyinfo_2_" >
+    tools:context=".FragmentMyinfo_2_noBo" >
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/img_backinfo"
         android:layout_width="65dp"
         android:layout_height="29dp"
         android:src="@drawable/reft"
@@ -31,13 +31,37 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="260dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="292dp"
-        android:text="가입한 보험정보(없으면 연계된 보험사 소개하면서 종류 보여주기)"
+        android:id="@+id/txt_main"
+        android:layout_width="309dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="380dp"
+        android:gravity="center"
+        android:text="등록된 보험정보가 없습니다."
+        android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_addBo"
+        android:layout_width="194dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="104dp"
+        android:text="보험 등록"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_main" />
+
+    <Button
+        android:id="@+id/btn_intro_kidBo"
+        android:layout_width="194dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="20dp"
+        android:text="어린이보험 소개"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_addBo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

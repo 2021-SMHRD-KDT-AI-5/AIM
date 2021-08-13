@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="test">
+        <item> 보험사 선택 </item>
+        <item> 삼성화재 </item>
+        <item> 교보 라이프 </item>
+        <item> 신한 라이프 </item>
+        <item> 한화 손해보험 </item>
+        <item> 라이나 생명 </item>
+        <item> DB손해보험 </item>
+        <item> 캐롯9900 </item>
+        <item> 동양생명 </item>
+        <item> KB손해보험 </item>
+        <item> 현대해상 </item>
+        <item> 직접 입력 </item>
+    </string-array>
+
+</resources>

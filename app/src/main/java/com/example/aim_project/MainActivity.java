@@ -1,6 +1,5 @@
 package com.example.aim_project;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -17,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentSound fragmentSound;
     FragmentMain fragmentMain;
     FragmentMyinfo_1_ fragmentMyinfo_1_;
-    FragmentMyinfo_2_ fragmentMyinfo_2_;
+    FragmentMyinfo_2_noBo fragmentMyinfo_2_noBo_;
     FragmentMyinfo_3_ fragmentMyinfo_3_;
     FragmentMyinfo_4_ fragmentMyinfo_4_;
     FragmentMyinfo_5_ fragmentMyinfo_5_;
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentSound = new FragmentSound();
         fragmentMain = new FragmentMain();
         fragmentMyinfo_1_ = new FragmentMyinfo_1_();
-        fragmentMyinfo_2_ = new FragmentMyinfo_2_();
+        fragmentMyinfo_2_noBo_ = new FragmentMyinfo_2_noBo();
         fragmentMyinfo_3_ = new FragmentMyinfo_3_();
         fragmentMyinfo_4_ = new FragmentMyinfo_4_();
         fragmentMyinfo_5_ = new FragmentMyinfo_5_();
