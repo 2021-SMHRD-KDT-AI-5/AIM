@@ -249,7 +249,7 @@
                 android:layout_height="32dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="328dp"
-                android:text="알림음 조절(가능?)"
+                android:text="알림음,진동세기 조절"
                 android:textSize="17dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -268,7 +268,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
-                android:id="@+id/textView36"
+                android:id="@+id/txt_delete_bo"
                 android:layout_width="158dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="16dp"
@@ -304,7 +304,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/ck_remember_id"
                 android:layout_width="146dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="12dp"
@@ -317,7 +317,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/ck_autologin"
                 android:layout_width="146dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="12dp"

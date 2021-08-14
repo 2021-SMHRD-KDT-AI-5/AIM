@@ -2,6 +2,7 @@ package com.example.aim_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentMyinfo_4_ = new FragmentMyinfo_4_();
         fragmentMyinfo_5_ = new FragmentMyinfo_5_();
         fragmentMyinfo_6_ = new FragmentMyinfo_6_();
+
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container,fragmentMain).commit();

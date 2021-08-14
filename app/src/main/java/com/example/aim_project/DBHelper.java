@@ -7,11 +7,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     public  DBHelper(Context context){
-        super(context, "AIMDataBase.db", null, 1);
+        super(context, "AIMDataBase2.db", null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL("CREATE TABLE loginset(recent_user_id VARCHAR2(30) NOT NULL, remember_id VARCHAR2(10), autologin VARCHAR2(10))");
+
         db.execSQL("CREATE TABLE aim_members(\n" +
                 "member_id VARCHAR2(30),\n" +
                 "password VARCHAR2(30) NOT NULL,\n" +
@@ -48,9 +51,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 "CONSTRAINT alarm_log_ck CHECK(cry_move IN('cry','move'))\n" +
                 ")");
 
+
         db.execSQL("CREATE TABLE tips(\n" +
                 "tip VARCHAR2(3000) NOT NULL\n" +
                 ")");
+
+
+
     }
 
     @Override

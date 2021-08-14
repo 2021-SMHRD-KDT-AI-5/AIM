@@ -1,5 +1,6 @@
 package com.example.aim_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,9 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 public class FragmentMain extends Fragment {
+
+    DBManager manager; // 로그인을 위한 DBManager 객체 생성
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,8 +53,14 @@ public class FragmentMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
 
+        manager = new DBManager(getActivity().getApplicationContext()); // 로그인을 위한 DBManager 객체 생성
 
+        Intent it_login = getActivity().getIntent();
+        String u_id = it_login.getStringExtra("loginId");
 
+        Toast.makeText(getContext(),"성공~!"+u_id,Toast.LENGTH_SHORT).show();
+
+        manager.loginOpUpdate(u_id);
 
         return view;
 
