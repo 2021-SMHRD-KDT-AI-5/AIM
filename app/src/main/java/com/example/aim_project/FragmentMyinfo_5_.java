@@ -36,8 +36,10 @@ public class FragmentMyinfo_5_ extends Fragment {
     RequestQueue requestQueue;
     StringRequest StringRequest_deleteBo; // 보험 정보 삭제
     CheckBox ck_remember_id,ck_autologin;
-    Boolean check1 = true;
-    Boolean check2 = true;
+    Boolean check1 = false;
+    Boolean check2 = false;
+    DBManager manager;
+    String[] list = new String[3];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,10 +51,24 @@ public class FragmentMyinfo_5_ extends Fragment {
         txt_delete_bo = view.findViewById(R.id.txt_delete_bo);
         ck_remember_id = view.findViewById(R.id.ck_remember_id);
         ck_autologin = view.findViewById(R.id.ck_autologin);
+        manager = new DBManager(getActivity().getApplicationContext());
 
 
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
+
+        boolean okman = manager.loginOpCheck();
+
+        list = manager.loginOp_return();
+
+        if (list[2].equals("yeah")) {  // 자동로그인 체크한경우
+            ck_autologin.setChecked(true);
+            check2 = true;
+        }
+        if (list[1].equals("yeah")) {  // 아이디 기억 체크한경우
+            ck_remember_id.setChecked(true);
+            check1 = true;
+        }
 
         ArrayAdapter monthAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.test3, android.R.layout.simple_spinner_dropdown_item);
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -116,11 +132,13 @@ public class FragmentMyinfo_5_ extends Fragment {
         ck_remember_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(check1 == true){     // 자동로그인 해제 하기
-                    Toast.makeText(getActivity().getApplicationContext(),"아이디 기억 설정 하겠습니다.",Toast.LENGTH_SHORT).show();
+                if(check1 == true){     // 아이디 기억 해제 하기
+
+                    manager.idRember_off();
                     check1 = false;
-                }else{                  // 자동로그인 설정 하기
-                    Toast.makeText(getActivity().getApplicationContext(),"아이디 기억 해제 하겠습니다.",Toast.LENGTH_SHORT).show();
+                }else{                  // 아이디 기억 설정 하기
+
+                    manager.idRember_on();
                     check1 = true;
                 }
             }
@@ -131,9 +149,11 @@ public class FragmentMyinfo_5_ extends Fragment {
             public void onClick(View v) {
                 if(check2 == true){     // 자동로그인 해제 하기
                     Toast.makeText(getActivity().getApplicationContext(),"자동로그인 설정 하겠습니다.",Toast.LENGTH_SHORT).show();
+                    manager.autoLogin_off();
                     check2 = false;
                 }else{                  // 자동로그인 설정 하기
                     Toast.makeText(getActivity().getApplicationContext(),"자동로그인 해제 하겠습니다.",Toast.LENGTH_SHORT).show();
+                    manager.autoLogin_on();
                     check2 = true;
                 }
             }

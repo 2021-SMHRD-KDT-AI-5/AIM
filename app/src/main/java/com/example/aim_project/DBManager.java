@@ -9,6 +9,7 @@ public class DBManager {
     DBHelper helper;
 
     String str = "nope";
+    String str_y = "yeah";
 
     public DBManager(Context context){ helper = new DBHelper(context); }
 
@@ -87,6 +88,28 @@ public class DBManager {
     public void loginOpUpdate(String id){   // 아이디를 최근 로그인한 아이디로 변경
         SQLiteDatabase db = helper.getWritableDatabase();
         db.execSQL("update loginset set recent_user_id ='"+id+"'");
+        db.close();
+    }
+
+    public void idRember_on(){   // 아이디 기억하기 켜기
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("update loginset set remember_id ='"+str_y+"'");
+        db.close();
+    }
+    public void autoLogin_on(){   // 자동로그인 켜기
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("update loginset set autologin ='"+str_y+"'");
+        db.close();
+    }
+
+    public void idRember_off(){   // 아이디 기억하기 켜기
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("update loginset set remember_id ='"+str+"'");
+        db.close();
+    }
+    public void autoLogin_off(){   // 자동로그인 켜기
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("update loginset set autologin ='"+str+"'");
         db.close();
     }
 

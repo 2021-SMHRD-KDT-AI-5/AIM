@@ -58,8 +58,6 @@ public class FragmentMain extends Fragment {
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
 
-        Toast.makeText(getContext(),"성공~!"+u_id,Toast.LENGTH_SHORT).show();
-
         manager.loginOpUpdate(u_id);
 
         return view;

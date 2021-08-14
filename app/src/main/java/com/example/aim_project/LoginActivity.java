@@ -49,19 +49,19 @@ public class LoginActivity extends AppCompatActivity {
 
         manager = new DBManager(getApplicationContext()); // 로그인을 위한 DBManager 객체 생성
 
-        boolean okman = manager.loginOpCheck();     // 왜 오류가 나는지 진짜 모르겠음
+        boolean okman = manager.loginOpCheck();
 
         if (okman == true) { // 로그인 옵션 테이블이 생성되어 있을경우
             list = manager.loginOp_return();
 
-            if (list[2].equals("yes")) {  // 자동로그인 체크한경우
+            if (list[2].equals("yeah")) {  // 자동로그인 체크한경우
                 Toast.makeText(getApplicationContext(), list[0] + "님, 환영합니다!", Toast.LENGTH_SHORT).show();
                 Intent it_login2 = new Intent(LoginActivity.this, MainActivity.class);
                 // 나중에 로그인한 회원 정보 담아서 보낼것!!!
                 it_login2.putExtra("loginId", list[0]);
                 startActivity(it_login2);
 
-            } else if (list[1].equals("yes")) {    // 아이디 기억 체크한경우
+            } else if (list[1].equals("yeah")) {    // 아이디 기억 체크한경우
                 tv_id.setText(list[0]);
             }
         }else{      // 어플 사용 처음일 경우 default 값으로 넣어주기
