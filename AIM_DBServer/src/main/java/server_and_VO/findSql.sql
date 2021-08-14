@@ -1,7 +1,9 @@
 
 select * from AIM_MEMBERS;
 
-select * from BABY_INFO;
+delete from insurance where member_id ='1234';
+
+select * from insurance;
 
 CREATE TABLE AIM_MEMBERS(
 	member_id VARCHAR2(30),
@@ -38,3 +40,12 @@ CREATE TABLE alarm_log(
 
 CREATE TABLE tips(
     tip VARCHAR2(3000) NOT NULL);
+    
+CREATE TABLE insurance(
+    member_id VARCHAR2(30) NOT NULL,
+    u_name VARCHAR2(30) NOT NULL,
+    bs_name VARCHAR2(30) NOT NULL,
+    b_name VARCHAR2(200) NOT NULL,
+    CONSTRAINT insurance_fk FOREIGN KEY(member_id)
+    REFERENCES aim_members(member_id));    
+    
