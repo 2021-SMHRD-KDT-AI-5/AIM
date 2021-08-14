@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,10 @@ public class LoginActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     StringRequest stringRequest_login; // 로그인 알고리즘
 
+    CheckBox ck_remember_id2,ck_autologin2;
+    Boolean check3 = false;     // 아이디    기억용 boolean
+    Boolean check4 = false;     // 자동로그인 기억용 boolean
+
     DBManager manager; // 로그인을 위한 DBManager 객체 생성
 
     @Override
@@ -43,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
         tv_pw = findViewById(R.id.tv_pw);
         btn_login = findViewById(R.id.btn_login);
         tx_join = findViewById(R.id.tx_join);
+        ck_remember_id2 = findViewById(R.id.ck_remember_id2);
+        ck_autologin2 = findViewById(R.id.ck_autologin2);
 
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -56,12 +63,16 @@ public class LoginActivity extends AppCompatActivity {
 
             if (list[2].equals("yeah")) {  // 자동로그인 체크한경우
                 Toast.makeText(getApplicationContext(), list[0] + "님, 환영합니다!", Toast.LENGTH_SHORT).show();
+                ck_autologin2.setChecked(true);
+                check4 = true;
                 Intent it_login2 = new Intent(LoginActivity.this, MainActivity.class);
                 // 나중에 로그인한 회원 정보 담아서 보낼것!!!
                 it_login2.putExtra("loginId", list[0]);
                 startActivity(it_login2);
 
             } else if (list[1].equals("yeah")) {    // 아이디 기억 체크한경우
+                ck_remember_id2.setChecked(true);
+                check3 = true;
                 tv_id.setText(list[0]);
             }
         }else{      // 어플 사용 처음일 경우 default 값으로 넣어주기
@@ -121,6 +132,32 @@ public class LoginActivity extends AppCompatActivity {
                     requestQueue.add(stringRequest_login);
                 }
             });
+
+        ck_remember_id2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check3 == true){     // 아이디 기억 해제 하기
+                    manager.idRember_off();
+                    check3 = false;
+                }else{                  // 아이디 기억 설정 하기
+                    manager.idRember_on();
+                    check3 = true;
+                }
+            }
+        });
+
+        ck_autologin2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(check4 == true){     // 자동로그인 해제 하기
+                    manager.autoLogin_off();
+                    check4 = false;
+                }else{                  // 자동로그인 설정 하기
+                    manager.autoLogin_on();
+                    check4 = true;
+                }
+            }
+        });
 
 
         }

@@ -133,11 +133,9 @@ public class FragmentMyinfo_5_ extends Fragment {
             @Override
             public void onClick(View v) {
                 if(check1 == true){     // 아이디 기억 해제 하기
-
                     manager.idRember_off();
                     check1 = false;
                 }else{                  // 아이디 기억 설정 하기
-
                     manager.idRember_on();
                     check1 = true;
                 }
@@ -148,11 +146,9 @@ public class FragmentMyinfo_5_ extends Fragment {
             @Override
             public void onClick(View v) {
                 if(check2 == true){     // 자동로그인 해제 하기
-                    Toast.makeText(getActivity().getApplicationContext(),"자동로그인 설정 하겠습니다.",Toast.LENGTH_SHORT).show();
                     manager.autoLogin_off();
                     check2 = false;
                 }else{                  // 자동로그인 설정 하기
-                    Toast.makeText(getActivity().getApplicationContext(),"자동로그인 해제 하겠습니다.",Toast.LENGTH_SHORT).show();
                     manager.autoLogin_on();
                     check2 = true;
                 }
