@@ -11,17 +11,13 @@ import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +27,8 @@ public class FragmentMyinfo extends Fragment {
     FragmentMyinfo fragmentMyinfo;
     FragmentMyinfo_1_ fragmentMyinfo_1_;
     FragmentMyinfo_2_noBo fragmentMyinfo_2_noBo_;
-    FragmentMyinfo_3_ fragmentMyinfo_3_;
+    FragmentMyinfo_3_noLicense fragmentMyinfo_3_noLicense_;
+    FragmentMyinfo_3_yesLicense fragmentMyinfo_3_yesLicense;
     FragmentMyinfo_4_ fragmentMyinfo_4_;
     FragmentMyinfo_5_ fragmentMyinfo_5_;
     FragmentMyinfo_6_ fragmentMyinfo_6_;
@@ -42,6 +39,7 @@ public class FragmentMyinfo extends Fragment {
 
     RequestQueue requestQueue;
     StringRequest StringRequest_selectBo; // 정보 조회
+    StringRequest StringRequest_LicenseCheck;
 
 
     @Override
@@ -51,7 +49,8 @@ public class FragmentMyinfo extends Fragment {
         fragmentMain = new FragmentMain();
         fragmentMyinfo_1_ = new FragmentMyinfo_1_();
         fragmentMyinfo_2_noBo_ = new FragmentMyinfo_2_noBo();
-        fragmentMyinfo_3_ = new FragmentMyinfo_3_();
+        fragmentMyinfo_3_noLicense_ = new FragmentMyinfo_3_noLicense();
+        fragmentMyinfo_3_yesLicense = new FragmentMyinfo_3_yesLicense();
         fragmentMyinfo_4_ = new FragmentMyinfo_4_();
         fragmentMyinfo_5_ = new FragmentMyinfo_5_();
         fragmentMyinfo_6_ = new FragmentMyinfo_6_();
@@ -98,6 +97,33 @@ public class FragmentMyinfo extends Fragment {
             }
         };
 
+        StringRequest_LicenseCheck = new StringRequest(Request.Method.POST,"http://172.30.1.1:8086/AIM_DBServer/LicenseServlet",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답을 처리
+                        if(response.equals("true")){      // 라이센스 있으면 yesLicense로
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_3_yesLicense).commit();
+                        }else{                          // 없으면 noLicense로
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_3_noLicense_).commit();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("id", u_id);
+                params.put("where","check");
+                return params;
+            }
+        };
+
+
         btn_1.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함
             @Override
             public void onClick(View v) {
@@ -113,7 +139,7 @@ public class FragmentMyinfo extends Fragment {
         btn_3.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo_3_).commit();
+                requestQueue.add(StringRequest_LicenseCheck);
             }
         });
         btn_4.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함

@@ -2,27 +2,39 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF0E8"
-    tools:context=".FragmentMyinfo_2_noBo" >
+    tools:context=".FragmentMyinfo_3_finish" >
 
     <TextView
-        android:id="@+id/txt_main2"
-        android:layout_width="319dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="392dp"
+        android:id="@+id/txt_main4"
+        android:layout_width="325dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="372dp"
         android:gravity="center"
-        android:text="서비스 이용을 위해서는          정액권 이 필요합니다."
+        android:text="정액권 등록이 완료되었습니다."
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/txt_main5"
+        android:layout_width="309dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="284dp"
+        android:gravity="center"
+        android:text="AIM 서비스 사용이 가능합니다."
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
-        android:id="@+id/img_backinfo"
+        android:id="@+id/img_backinfo2"
         android:layout_width="65dp"
         android:layout_height="29dp"
         android:src="@drawable/reft"
@@ -32,7 +44,7 @@
         app:layout_constraintVertical_bias="0.038" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/imageView5"
         android:layout_width="228dp"
         android:layout_height="148dp"
         android:src="@drawable/logomain"
@@ -44,23 +56,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btn_buyLicense"
-        android:layout_width="126dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="380dp"
-        android:text="정액권 구입"
+        android:id="@+id/btn_gomenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="448dp"
+        android:text="확인"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_enterCode"
-        android:layout_width="126dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="216dp"
-        android:layout_marginTop="380dp"
-        android:text="코드입력"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,6 @@ package com.example.aim_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentMain fragmentMain;
     FragmentMyinfo_1_ fragmentMyinfo_1_;
     FragmentMyinfo_2_noBo fragmentMyinfo_2_noBo_;
-    FragmentMyinfo_3_ fragmentMyinfo_3_;
+    FragmentMyinfo_3_noLicense fragmentMyinfo_3_noLicense_;
     FragmentMyinfo_4_ fragmentMyinfo_4_;
     FragmentMyinfo_5_ fragmentMyinfo_5_;
     FragmentMyinfo_6_ fragmentMyinfo_6_;
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentMain = new FragmentMain();
         fragmentMyinfo_1_ = new FragmentMyinfo_1_();
         fragmentMyinfo_2_noBo_ = new FragmentMyinfo_2_noBo();
-        fragmentMyinfo_3_ = new FragmentMyinfo_3_();
+        fragmentMyinfo_3_noLicense_ = new FragmentMyinfo_3_noLicense();
         fragmentMyinfo_4_ = new FragmentMyinfo_4_();
         fragmentMyinfo_5_ = new FragmentMyinfo_5_();
         fragmentMyinfo_6_ = new FragmentMyinfo_6_();

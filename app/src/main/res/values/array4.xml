@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="test4">
+    <item> 정액권 선택 </item>
+    <item> 월정액권 </item>
+    <item> 6개월 </item>
+    <item> 12개월 </item>
+    </string-array>
+
+</resources>
