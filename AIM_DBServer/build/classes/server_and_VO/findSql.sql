@@ -1,5 +1,6 @@
-
 select * from AIM_MEMBERS;
+
+select * from BABY_INFO;
 
 delete from insurance where member_id ='1234';
 
