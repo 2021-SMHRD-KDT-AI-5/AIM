@@ -9,7 +9,7 @@
     tools:context=".FragmentDiary_1" >
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/img_baby_profile"
         android:layout_width="228dp"
         android:layout_height="148dp"
         android:src="@drawable/logomain"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:layout_constraintTop_toBottomOf="@+id/img_baby_profile"
 
 
         />
