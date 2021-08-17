@@ -13,7 +13,7 @@
         android:layout_height="76dp"
         android:layout_marginBottom="372dp"
         android:gravity="center"
-        android:text="정액권 등록이 완료되었습니다."
+        android:text="정액권이 해지되었습니다."
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,11 +22,11 @@
 
     <TextView
         android:id="@+id/txt_main_5"
-        android:layout_width="309dp"
-        android:layout_height="48dp"
+        android:layout_width="353dp"
+        android:layout_height="56dp"
         android:layout_marginBottom="284dp"
         android:gravity="center"
-        android:text="AIM 서비스 사용이 가능합니다."
+        android:text="그동안 AIM 서비스를 이용해주셔서 감사합니다."
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
