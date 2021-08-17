@@ -7,25 +7,35 @@
     android:background="#FFF0E8"
     tools:context=".FragmentMyinfo_3_yesLicense" >
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="222dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="288dp"
-        android:gravity="center|left"
-        android:text="구매일시"
-        android:textSize="19dp"
-        android:textStyle="bold"
+    <View
+        android:id="@+id/textView52"
+        android:layout_width="375dp"
+        android:layout_height="2px"
+        android:layout_marginTop="212dp"
+        android:background="#DCDBDB"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/textView53"
+        android:layout_width="375dp"
+        android:layout_height="2px"
+        android:layout_marginTop="388dp"
+        android:background="#DCDBDB"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView41"
-        android:layout_width="222dp"
-        android:layout_height="33dp"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="224dp"
         android:gravity="center|left"
         android:text="남은기간"
         android:textSize="19dp"
@@ -34,11 +44,64 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/txt_availDay"
+        android:layout_width="192dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="224dp"
+        android:gravity="center|left"
+        android:text="30일"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_useDay"
+        android:layout_width="192dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="174dp"
+        android:layout_marginTop="275dp"
+        android:gravity="center|left"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2021-08-15" />
+
+    <TextView
+        android:id="@+id/txt_LicenseType"
+        android:layout_width="192dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="174dp"
+        android:layout_marginTop="328dp"
+        android:gravity="center|left"
+        android:text="6개월 정액권(코드)"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="276dp"
+        android:gravity="center|left"
+        android:text="등록일시"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView42"
-        android:layout_width="222dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="388dp"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="328dp"
         android:gravity="center|left"
         android:text="정액권 형태"
         android:textSize="19dp"
@@ -47,17 +110,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_main6"
-        android:layout_width="319dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="412dp"
-        android:gravity="center"
+        android:id="@+id/txt_licenseInfo"
+        android:layout_width="322dp"
+        android:layout_height="48dp"
+        android:gravity="center|left"
         android:text="@@@ 님의 정액권 정보"
         android:textSize="25dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
     <ImageView
         android:id="@+id/img_backinfo5"
@@ -82,12 +145,60 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="108dp"
-        android:text="환불"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:id="@+id/btn_delete"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="152dp"
+        android:text="환불 or 취소"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView56" />
+
+    <TextView
+        android:id="@+id/textView54"
+        android:layout_width="318dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center|left"
+        android:text="환불기준"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView53" />
+
+    <TextView
+        android:id="@+id/textView51"
+        android:layout_width="325dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="4dp"
+        android:text="결제를 통해 구매하신 정액권에 한해 가능하며, 쿠폰     코드를 통해 등록하신 정액권의 경우 취소만 가능합니다. "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView54" />
+
+    <TextView
+        android:id="@+id/textView55"
+        android:layout_width="318dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="4dp"
+        android:text="등록일 기준 1일 후 부터 일자별로 계산 "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView51" />
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="318dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="4dp"
+        android:text="한번 취소하신 정액권은 재등록이 불가능합니다."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView55" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
