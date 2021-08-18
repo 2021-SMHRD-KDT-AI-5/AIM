@@ -62,20 +62,22 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_defult_profile"
         app:layout_constraintBottom_toBottomOf="@+id/tv_dday"
         app:layout_constraintEnd_toStartOf="@+id/tv_dday"
         app:layout_constraintTop_toTopOf="@+id/tv_dday"
-        android:src="@drawable/ic_defult_profile" />
+        tools:srcCompat="@drawable/ic_defult_profile" />
 
     <ImageView
         android:id="@+id/img_baby_profile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
+        android:src="@drawable/img2"
         app:layout_constraintBottom_toBottomOf="@+id/tv_dday"
         app:layout_constraintStart_toEndOf="@+id/tv_dday"
         app:layout_constraintTop_toTopOf="@+id/tv_dday"
-        android:src="@drawable/img2" />
+        tools:srcCompat="@drawable/ic_defult_profile" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"

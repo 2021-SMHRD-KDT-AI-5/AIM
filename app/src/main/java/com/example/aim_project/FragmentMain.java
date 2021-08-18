@@ -1,18 +1,24 @@
 package com.example.aim_project;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class FragmentMain extends Fragment {
@@ -20,6 +26,9 @@ public class FragmentMain extends Fragment {
     DBManager manager; // 로그인을 위한 DBManager 객체 생성
 
     TextView tv_dday;
+    int GET_GALLARY_IMAGE1 = 100;
+    int GET_GALLARY_IMAGE2 = 200;
+    ImageView img_parent_profile, img_baby_profile;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +68,8 @@ public class FragmentMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         tv_dday = view.findViewById(R.id.tv_dday);
+        img_parent_profile = view.findViewById(R.id.img_parent_profile);
+        img_baby_profile = view.findViewById(R.id.img_baby_profile);
 
         manager = new DBManager(getActivity().getApplicationContext()); // 로그인을 위한 DBManager 객체 생성
 
@@ -80,6 +91,25 @@ public class FragmentMain extends Fragment {
         }
 
         tv_dday.setText("D + " + Dday_cal(birthday));
+
+        // 프로필 사진 클릭시 부모와 아이 프로필사진 바꾸기
+        img_parent_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
+                startActivityForResult(intent, GET_GALLARY_IMAGE1);
+            }
+        });
+
+        img_baby_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
+                startActivityForResult(intent, GET_GALLARY_IMAGE2);
+            }
+        });
 
         return view;
 
@@ -104,4 +134,19 @@ public class FragmentMain extends Fragment {
 
         return count;
     }
+
+    // 프로필사진 선택 후 응답받는 곳
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==GET_GALLARY_IMAGE1 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
+            Uri selectedImageUri = data.getData();
+            img_parent_profile.setImageURI(selectedImageUri);
+        }else if(requestCode==GET_GALLARY_IMAGE2 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
+            Uri selectedImageUri = data.getData();
+            img_parent_profile.setImageURI(selectedImageUri);
+        }
+    }
+
 }
