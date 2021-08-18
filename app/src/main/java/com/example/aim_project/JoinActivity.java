@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -49,8 +50,8 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    String result;
-                    String result2;
+                    String joinMember;
+                    String joinBaby;
                     String id = edt_id.getText().toString();
                     String pw = edt_pw.getText().toString();
                     String email = edt_email.getText().toString();
@@ -58,15 +59,22 @@ public class JoinActivity extends AppCompatActivity {
                     String babyName = edt_baby_name.getText().toString();
                     String babyBirthday = edt_baby_birthday.getText().toString();
 
-                    Join task = new Join();
-                    result = task.execute(id, pw, email, ip).get();
+                    // 회원가입 정보를 담아 Task로 전달
+                    joinMember = new Task("joinMember").execute("joinMember", id, pw, email, ip).get();
 
-                    Join_Baby task2 = new Join_Baby();
-                    result2 = task2.execute(id, babyName, babyBirthday).get();
+                    // 아기등록 정보를 담아 Task에 전달
+                    joinBaby = new Task("joinBaby").execute("joinBaby", id, babyName, babyBirthday).get();
 
-                    Toast.makeText(getApplicationContext(),"회원가입 완료! 가입하신 아이디로 로그인해보세요!",Toast.LENGTH_SHORT).show();
-                    Intent it = new Intent();
-                    finish();
+                    joinMember = Html.fromHtml(joinMember).toString().trim(); // html태그 제거 및 공백 제거
+                    joinBaby = Html.fromHtml(joinBaby).toString().trim(); // html태그 제거 및 공백 제거
+
+                    if(joinMember.equals("1") && joinBaby.equals("1")){
+                        Toast.makeText(getApplicationContext(),"회원가입 완료! 가입하신 아이디로 로그인해보세요!",Toast.LENGTH_SHORT).show();
+                        Intent it = new Intent();
+                        finish();
+                    }else{
+                        Toast.makeText(getApplicationContext(),"회원가입 실패",Toast.LENGTH_SHORT).show();
+                    }
 
                 } catch (Exception e) {
                     Log.i("DBtest", ".....ERROR.....!");

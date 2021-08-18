@@ -1,6 +1,8 @@
 package com.example.aim_project;
 
 import android.os.AsyncTask;
+import android.text.Html;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,16 +12,20 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Join extends AsyncTask<String, Void, String> {
+public class Task extends AsyncTask<String, Void, String> {
     String sendMsg, receiveMsg;
+
+    Task(String sendmsg){
+        this.sendMsg = sendmsg;
+    }
 
     @Override
     protected String doInBackground(String... strings) {
         try {
             String str;
 
-            // 접속할 서버 주소 (이클립스에서 android.jsp 실행시 웹브라우저 주소)
-            URL url = new URL("http:/172.30.1.15:8090/AIM_DBServer/Join_Member.jsp");
+            // 접속할 서버 주소 (이클립스에서 .jsp 실행시 웹브라우저 주소)
+            URL url = new URL("http://172.30.1.15:8090/AIM_DBServer/ConnectDB.jsp");
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
@@ -27,7 +33,13 @@ public class Join extends AsyncTask<String, Void, String> {
             OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
 
             // 전송할 데이터. GET 방식으로 작성
-            sendMsg = "id=" + strings[0] + "&pw=" + strings[1] + "&email=" + strings[2] + "&ip=" + strings[3];
+            if (sendMsg.equals("getBirthday")) { // 아기 생일 가져오기
+                sendMsg = "task=" + strings[0] + "&id=" + strings[1];
+            }else if(sendMsg.equals("joinMember")){ // 회원가입
+                sendMsg = "task=" + strings[0] + "&id=" + strings[1] + "&pw=" + strings[2] + "&email=" + strings[3] + "&ip=" + strings[4];
+            }else if(sendMsg.equals("joinBaby")){ // 아기정보 등록
+                sendMsg = "task=" + strings[0] + "&id=" + strings[1] + "&babyName=" + strings[2] + "&babyBirthday=" + strings[3];
+            }
 
             osw.write(sendMsg);
             osw.flush();
@@ -52,9 +64,12 @@ public class Join extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         }
 
-        //jsp로부터 받은 리턴 값
+//        //jsp로부터 받은 리턴 값
+//        Log.v("return", Html.fromHtml(receiveMsg).toString().trim());
+
         return receiveMsg;
     }
 
 }
+
 

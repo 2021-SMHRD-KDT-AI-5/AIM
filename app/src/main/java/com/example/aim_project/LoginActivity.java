@@ -81,57 +81,57 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-            stringRequest_login = new StringRequest(Request.Method.POST, "http://172.30.1.1:8086/AIM_DBServer/LoginServlet",
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            // 응답을 처리
-                            if (response.equals("true")) {
-                                Toast.makeText(getApplicationContext(), tv_id.getText().toString() + "님, 환영합니다!", Toast.LENGTH_SHORT).show();
-                                Intent it_login = new Intent(LoginActivity.this, MainActivity.class);
-                                // 나중에 로그인한 회원 정보 담아서 보낼것!!!
-                                it_login.putExtra("loginId", tv_id.getText().toString());
-                                startActivity(it_login);
-                            } else {
-                                Toast.makeText(getApplicationContext(), "아이디와 비번을 확인해보셔요 아니면 서버", Toast.LENGTH_SHORT).show();
-                            }
-
+        stringRequest_login = new StringRequest(Request.Method.POST, "http://172.30.1.15:8090/AIM_DBServer/LoginServlet",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답을 처리
+                        if (response.equals("true")) {
+                            Toast.makeText(getApplicationContext(), tv_id.getText().toString() + "님, 환영합니다!", Toast.LENGTH_SHORT).show();
+                            Intent it_login = new Intent(LoginActivity.this, MainActivity.class);
+                            // 나중에 로그인한 회원 정보 담아서 보낼것!!!
+                            it_login.putExtra("loginId", tv_id.getText().toString());
+                            startActivity(it_login);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "아이디와 비번을 확인해보셔요 아니면 서버", Toast.LENGTH_SHORT).show();
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
 
-                }
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<>();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
-                    params.put("id", tv_id.getText().toString());
-                    params.put("pw", tv_pw.getText().toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
 
-                    return params;
-                }
-            };
+                params.put("id", tv_id.getText().toString());
+                params.put("pw", tv_pw.getText().toString());
 
-            // 회원가입 텍스트 누르면 -> 회원가입 화면으로
-            tx_join.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent it_join = new Intent(LoginActivity.this, JoinActivity.class);
-                    startActivityForResult(it_join, 1001);
-                }
-            });
+                return params;
+            }
+        };
+
+        // 회원가입 텍스트 누르면 -> 회원가입 화면으로
+        tx_join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it_join = new Intent(LoginActivity.this, JoinActivity.class);
+                startActivityForResult(it_join, 1001);
+            }
+        });
 
 
-            // 로그인이 완료되면 -> 메인화면으로
-            btn_login.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        // 로그인이 완료되면 -> 메인화면으로
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    requestQueue.add(stringRequest_login);
-                }
-            });
+                requestQueue.add(stringRequest_login);
+            }
+        });
 
         ck_remember_id2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,7 +160,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        }
-
     }
 
+}
