@@ -25,7 +25,7 @@ public class FragmentMain extends Fragment {
 
     DBManager manager; // 로그인을 위한 DBManager 객체 생성
 
-    TextView tv_dday;
+    TextView tv_dday, tv_tip;
     int GET_GALLARY_IMAGE1 = 100;
     int GET_GALLARY_IMAGE2 = 200;
     ImageView img_parent_profile, img_baby_profile;
@@ -68,6 +68,7 @@ public class FragmentMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         tv_dday = view.findViewById(R.id.tv_dday);
+        tv_tip = view.findViewById(R.id.tv_tip);
         img_parent_profile = view.findViewById(R.id.img_parent_profile);
         img_baby_profile = view.findViewById(R.id.img_baby_profile);
 
@@ -77,6 +78,9 @@ public class FragmentMain extends Fragment {
         String u_id = it_login.getStringExtra("loginId");
 
         manager.loginOpUpdate(u_id);
+
+        // 팁 출력
+        tv_tip.setText(manager.getTip());
 
         // 로그인중인 회원 아이디 기반으로 아기 생일 가져오기
         String birthday = null;
