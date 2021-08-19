@@ -7,6 +7,7 @@
 <title></title>
 </head>
 <body>
+	<%@page import="server_and_VO.Baby_Info"%>
 	<%@page import="server_and_VO.BabyInfoDAO"%>
 	<%@page import="server_and_VO.AIM_Member_DAO"%>
 

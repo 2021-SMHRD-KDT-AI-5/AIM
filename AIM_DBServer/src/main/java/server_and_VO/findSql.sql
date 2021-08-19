@@ -3,8 +3,9 @@ select * from AIM_MEMBERS;
 select * from BABY_INFO;
 
 delete from insurance where member_id ='1234';
+delete from license;
 
-select * from insurance;
+select * from license;
 
 CREATE TABLE AIM_MEMBERS(
 	member_id VARCHAR2(30),
@@ -49,4 +50,12 @@ CREATE TABLE insurance(
     b_name VARCHAR2(200) NOT NULL,
     CONSTRAINT insurance_fk FOREIGN KEY(member_id)
     REFERENCES aim_members(member_id));    
+    
+CREATE TABLE license(
+    member_id VARCHAR2(30) NOT NULL,
+    license_type VARCHAR2(30) NOT NULL,
+    license_codeOrnot VARCHAR2(10) NOT NULL,
+    use_date date DEFAULT SYSDATE not null,
+    CONSTRAINT license_fk FOREIGN KEY(member_id)
+    REFERENCES aim_members(member_id));  
     

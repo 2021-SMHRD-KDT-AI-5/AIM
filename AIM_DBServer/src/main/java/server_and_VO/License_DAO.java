@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Bohum_DAO { // 회원 DB관리 DAO클래스
+public class License_DAO { // 회원 DB관리 DAO클래스
 
 	private Connection conn = null;
 	private PreparedStatement psmt = null;
@@ -54,18 +54,18 @@ public class Bohum_DAO { // 회원 DB관리 DAO클래스
 		}
 	}
 
-	// 보험등록
-	public int AddBo(String id, String name, String bs_name, String b_name) {
+	// 정액권 등록
+	public int AddLicense(String id, String type, String codeOrNot) {
 		conn();
 
 		int result = 0;
-		String sql = "insert into insurance values(?,?,?,?)";
+		String sql = "insert into license values(?,?,?,sysdate)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
-			ps.setString(2, name);
-			ps.setString(3, bs_name);
-			ps.setString(4, b_name);
+			ps.setString(2, type);
+			ps.setString(3, codeOrNot);
+			
 
 			result = ps.executeUpdate();
 
@@ -79,12 +79,12 @@ public class Bohum_DAO { // 회원 DB관리 DAO클래스
 		return result;
 	}
 
-	public boolean BoChecked(String id) {
+	public boolean LicenseChecked(String id) {
 		conn();
 
 		boolean success = false;
 
-		String sql = "select member_id from insurance where member_id = ?";
+		String sql = "select member_id from license where member_id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
@@ -103,12 +103,12 @@ public class Bohum_DAO { // 회원 DB관리 DAO클래스
 		return success;
 	}
 
-	public String select_Bo(String id) {
+	public String select_License(String id) {
 		conn();
 
 		String str = "";
 
-		String sql = "select * from insurance where member_id = ?";
+		String sql = "select * from license where member_id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
@@ -117,11 +117,11 @@ public class Bohum_DAO { // 회원 DB관리 DAO클래스
 
 			while (rs.next()) {
 				String user_id = rs.getString(1);
-				String user_name = rs.getString(2);
-				String bs = rs.getString(3);
-				String b = rs.getString(4);
+				String license_type = rs.getString(2);
+				String license_codeOrnot = rs.getString(3);
+				String use_date = rs.getString(4);
 
-				str = user_name + "," + bs + "," + b;
+				str =  license_type + "," + license_codeOrnot + "," + use_date;
 
 			}
 
@@ -135,11 +135,11 @@ public class Bohum_DAO { // 회원 DB관리 DAO클래스
 		return str;
 	}
 
-	public int DeleteBo(String id) {
+	public int Delete_License(String id) {
 		conn();
 
 		int result = 0;
-		String sql = "delete from insurance where member_id = ?";
+		String sql = "delete from license where member_id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
