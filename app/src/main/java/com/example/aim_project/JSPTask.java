@@ -12,10 +12,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Task extends AsyncTask<String, Void, String> {
+public class JSPTask extends AsyncTask<String, Void, String> {
     String sendMsg, receiveMsg;
 
-    Task(String sendmsg){
+    JSPTask(String sendmsg){
         this.sendMsg = sendmsg;
     }
 
@@ -25,7 +25,7 @@ public class Task extends AsyncTask<String, Void, String> {
             String str;
 
             // 접속할 서버 주소 (이클립스에서 .jsp 실행시 웹브라우저 주소)
-            URL url = new URL("http://172.30.1.15:8090/AIM_DBServer/ConnectDB.jsp");
+            URL url = new URL("http://192.168.0.24:8092/AIM_DBServer/ConnectDB.jsp");
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
@@ -57,6 +57,7 @@ public class Task extends AsyncTask<String, Void, String> {
                 receiveMsg = buffer.toString();
             } else {
                 // 통신 실패
+                Log.i("jsp connection","jsp연결 실패");
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
