@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -86,7 +85,7 @@ public class FragmentMain extends Fragment {
         String birthday = null;
 
         try {
-            birthday = new Task("getBirthday").execute("getBirthday",u_id).get();
+            birthday = new JSPTask("getBirthday").execute("getBirthday",u_id).get();
             birthday = Html.fromHtml(birthday).toString().trim(); // html태그 제거 및 공백 제거
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -149,7 +148,7 @@ public class FragmentMain extends Fragment {
             img_parent_profile.setImageURI(selectedImageUri);
         }else if(requestCode==GET_GALLARY_IMAGE2 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
             Uri selectedImageUri = data.getData();
-            img_parent_profile.setImageURI(selectedImageUri);
+            img_baby_profile.setImageURI(selectedImageUri);
         }
     }
 

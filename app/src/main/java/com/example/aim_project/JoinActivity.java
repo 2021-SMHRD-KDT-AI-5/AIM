@@ -69,10 +69,10 @@ public class JoinActivity extends AppCompatActivity {
                     String babyBirthday = edt_baby_birthday.getText().toString();
 
                     // 회원가입 정보를 담아 Task로 전달
-                    joinMember = new Task("joinMember").execute("joinMember", id, pw, email, ip).get();
+                    joinMember = new JSPTask("joinMember").execute("joinMember", id, pw, email, ip).get();
 
                     // 아기등록 정보를 담아 Task에 전달
-                    joinBaby = new Task("joinBaby").execute("joinBaby", id, babyName, babyBirthday).get();
+                    joinBaby = new JSPTask("joinBaby").execute("joinBaby", id, babyName, babyBirthday).get();
 
                     joinMember = Html.fromHtml(joinMember).toString().trim(); // html태그 제거 및 공백 제거
                     joinBaby = Html.fromHtml(joinBaby).toString().trim(); // html태그 제거 및 공백 제거
