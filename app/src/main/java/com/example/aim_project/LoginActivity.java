@@ -2,9 +2,11 @@ package com.example.aim_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -39,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
 
     DBManager manager; // 로그인을 위한 DBManager 객체 생성
 
+    Dialog dilaog01;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,10 @@ public class LoginActivity extends AppCompatActivity {
         tx_join = findViewById(R.id.tx_join);
         ck_remember_id2 = findViewById(R.id.ck_remember_id2);
         ck_autologin2 = findViewById(R.id.ck_autologin2);
+
+        dilaog01 = new Dialog(LoginActivity.this);       // Dialog 초기화
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        dilaog01.setContentView(R.layout.dialog02_fail);             // xml 레이아웃 파일과 연결
 
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -93,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                             it_login.putExtra("loginId", tv_id.getText().toString());
                             startActivity(it_login);
                         } else {
-                            Toast.makeText(getApplicationContext(), "아이디와 비번을 확인해보셔요 아니면 서버", Toast.LENGTH_SHORT).show();
+                            showDialog01();
                         }
 
                     }
@@ -160,6 +168,19 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    // dialog02을 디자인하는 함수
+    public void showDialog01() {
+        dilaog01.show();
+
+        dilaog01.findViewById(R.id.btn_yes).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                dilaog01.dismiss();          // 다이얼로그 닫기
+            }
+        });
     }
 
 }

@@ -78,40 +78,6 @@ public class FragmentMyinfo extends Fragment {
 
 
 
-
-
- /////--------------------- 애니메이션 구간 ---------------------------/////
-
-
-        // 페이지 이동하자마자 실행됨
-
-
-        Animation.AnimationListener aniListener01 = new Animation.AnimationListener() { // 애니메이션 리스너 생성
-            public void onAnimationEnd(Animation animation) { // 애니메이션이 끝났을 때
-                Toast.makeText(getContext(),"애니메이션 종료",Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) { }      // 반복할때
-            @Override
-            public void onAnimationStart(Animation animation) {
-                Toast.makeText(getContext(),"애니메이션 시작",Toast.LENGTH_SHORT).show();  // 시작할때
-            }
-        };
-
-        Animation anim = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),R.anim.translate);   // res - anim 에 있는 애니메이션 xml이름
-        anim.setAnimationListener(aniListener01);       // 리스너에 애니메이션 등록
-
-        img_aimlogo_m.startAnimation(anim); // 애니메이션 실행
-
-
-
-/////----------------------------------------------------------------/////
-
-
-
-
-
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
