@@ -86,14 +86,14 @@ public class FragmentMain extends Fragment {
 
         try {
             birthday = new JSPTask("getBirthday").execute("getBirthday",u_id).get();
-            birthday = Html.fromHtml(birthday).toString().trim(); // html태그 제거 및 공백 제거
+//            birthday = Html.fromHtml(birthday).toString().trim(); // html태그 제거 및 공백 제거
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        tv_dday.setText("D + " + Dday_cal(birthday));
+//        tv_dday.setText("D + " + Dday_cal(birthday));
 
         // 프로필 사진 클릭시 부모와 아이 프로필사진 바꾸기
         img_parent_profile.setOnClickListener(new View.OnClickListener() {

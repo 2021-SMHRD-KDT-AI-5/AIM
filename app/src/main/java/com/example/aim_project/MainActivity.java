@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bnv;
 
     FragmentCamera fragmentCamera;
-    //    FragmentDiary fragmentDiary;
+//    FragmentDiary fragmentDiary;
     FragmentDiary_1 fragmentDiary_1;
     FragmentMyinfo fragmentMyinfo;
     FragmentSound fragmentSound;
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     FragmentMyinfo_5_ fragmentMyinfo_5_;
     FragmentMyinfo_6_ fragmentMyinfo_6_;
 
-    //    private String TAG; //이 부분 수정
-    private static final String TAG = "FMS";
+//    private String TAG; //이 부분 수정
+private static final String TAG = "FMS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +59,21 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseMessaging.getInstance().getToken().
                 addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete( Task<String> task) {
-                        if (!task.isSuccessful()){
-                            Log.w(TAG,"Fetching FCM registration failed",task.getException());
-                            return;
-                        }
+            @Override
+            public void onComplete( Task<String> task) {
+                if (!task.isSuccessful()){
+                    Log.w(TAG,"Fetching FCM registration failed",task.getException());
+                    return;
+                }
 
-                        String token = task.getResult();
+                String token = task.getResult();
 
-                        String msg = getString(R.string.msg_token_fmt,token);
-                        Log.d(TAG,msg);
-                        Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
+                String msg = getString(R.string.msg_token_fmt,token);
+                Log.d(TAG,msg);
+                Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
 
-                    }
-                });
+            }
+        });
 
 //        if(getIntent().getExtras() != null){
 //            Log.d("MainActivity",getIntent().getExtras().getString("test"));
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.container2,fragmentSound).commit();
 
-                        break;
+                    break;
 //                테스트
                 }
                 return true;
