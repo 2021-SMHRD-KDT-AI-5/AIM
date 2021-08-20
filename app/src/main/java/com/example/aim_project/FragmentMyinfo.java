@@ -1,12 +1,17 @@
 package com.example.aim_project;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -35,11 +40,12 @@ public class FragmentMyinfo extends Fragment {
     FragmentMain fragmentMain;
     FragmentMyinfo_2_ifBo fragmentMyinfo_2_ifBo;
     Button btn_1,btn_2,btn_3,btn_4,btn_5,btn_6;
-    ImageView img1;
+    ImageView img1,img_aimlogo_m;
 
     RequestQueue requestQueue;
     StringRequest StringRequest_selectBo; // 정보 조회
     StringRequest StringRequest_LicenseCheck;
+
 
 
     @Override
@@ -65,9 +71,46 @@ public class FragmentMyinfo extends Fragment {
         btn_6 = view.findViewById(R.id.btn_6);
 
         img1 = view.findViewById(R.id.img1);
+        img_aimlogo_m = view.findViewById(R.id.img_aimlogo_m);
 
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
+
+
+
+
+
+ /////--------------------- 애니메이션 구간 ---------------------------/////
+
+
+        // 페이지 이동하자마자 실행됨
+
+
+        Animation.AnimationListener aniListener01 = new Animation.AnimationListener() { // 애니메이션 리스너 생성
+            public void onAnimationEnd(Animation animation) { // 애니메이션이 끝났을 때
+                Toast.makeText(getContext(),"애니메이션 종료",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) { }      // 반복할때
+            @Override
+            public void onAnimationStart(Animation animation) {
+                Toast.makeText(getContext(),"애니메이션 시작",Toast.LENGTH_SHORT).show();  // 시작할때
+            }
+        };
+
+        Animation anim = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),R.anim.translate);   // res - anim 에 있는 애니메이션 xml이름
+        anim.setAnimationListener(aniListener01);       // 리스너에 애니메이션 등록
+
+        img_aimlogo_m.startAnimation(anim); // 애니메이션 실행
+
+
+
+/////----------------------------------------------------------------/////
+
+
+
+
 
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
@@ -78,9 +121,9 @@ public class FragmentMyinfo extends Fragment {
                     public void onResponse(String response) {
                         // 응답을 처리
                         if(response.equals("true")){      // 보험등록 했었으면 ifBo로
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_2_ifBo).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_2_ifBo).commit();
                         }else{                          // 안했으면 noBo로
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_2_noBo_).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_2_noBo_).commit();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -103,9 +146,9 @@ public class FragmentMyinfo extends Fragment {
                     public void onResponse(String response) {
                         // 응답을 처리
                         if(response.equals("true")){      // 라이센스 있으면 yesLicense로
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_3_yesLicense).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_3_yesLicense).commit();
                         }else{                          // 없으면 noLicense로
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_3_noLicense_).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_3_noLicense_).commit();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -127,7 +170,7 @@ public class FragmentMyinfo extends Fragment {
         btn_1.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo_1_).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_1_).commit();
             }
         });
         btn_2.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함
@@ -145,19 +188,26 @@ public class FragmentMyinfo extends Fragment {
         btn_4.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo_4_).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_4_).commit();
             }
         });
         btn_5.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo_5_).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_5_).commit();
             }
         });
         btn_6.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo_6_).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_6_).commit();
+            }
+        });
+
+        img_aimlogo_m.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

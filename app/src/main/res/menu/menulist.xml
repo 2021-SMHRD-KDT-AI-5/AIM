@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/check"
+        android:id="@+id/uq"
         android:icon="@drawable/cctv"
         android:title="아이확인" />
     <item
-        android:id="@+id/sound"
+        android:id="@+id/oneQue"
         android:icon="@drawable/sound"
         android:title="아이소리" />
     <item
-        android:id="@+id/diary"
+        android:id="@+id/diary1"
         android:icon="@drawable/diary"
         android:title="육아일지" />
     <item
-        android:id="@+id/myinfo"
+        android:id="@+id/chatbot"
         android:icon="@drawable/info"
         android:title="내정보" />
 </menu>

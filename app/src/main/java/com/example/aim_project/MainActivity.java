@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bnv;
+
     FragmentCamera fragmentCamera;
 //    FragmentDiary fragmentDiary;
     FragmentDiary_1 fragmentDiary_1;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bnv = findViewById(R.id.bottonbar);
+        bnv = findViewById(R.id.menubar);
         fragmentCamera = new FragmentCamera();
 //        fragmentDiary = new FragmentDiary();
         fragmentDiary_1 = new FragmentDiary_1();
@@ -42,28 +43,28 @@ public class MainActivity extends AppCompatActivity {
 
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container,fragmentMain).commit();
+                .replace(R.id.container2,fragmentMain).commit();
 
 
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.check:
+                    case R.id.uq:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container,fragmentCamera).commit();
+                                .replace(R.id.container2,fragmentCamera).commit();
                         break;
-                    case R.id.diary:
+                    case R.id.diary1:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container,fragmentDiary_1).commit();
+                                .replace(R.id.container2,fragmentDiary_1).commit();
                         break;
-                    case R.id.myinfo:
+                    case R.id.chatbot:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container,fragmentMyinfo).commit();
+                                .replace(R.id.container2,fragmentMyinfo).commit();
                         break;
-                    case R.id.sound:
+                    case R.id.oneQue:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container,fragmentSound).commit();
+                                .replace(R.id.container2,fragmentSound).commit();
 
                     break;
 //                테스트

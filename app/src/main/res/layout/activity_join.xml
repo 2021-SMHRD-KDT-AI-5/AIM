@@ -36,10 +36,10 @@
 
     <Button
         android:id="@+id/join_ok"
-        android:layout_width="93dp"
+        android:layout_width="140dp"
         android:layout_height="39dp"
         android:layout_marginBottom="50dp"
-        android:background="#ffb191"
+        android:background="@drawable/solid_button"
         android:text="가입완료"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="30dp"
+        android:background="#23C88A8A"
         app:layout_constraintBottom_toTopOf="@+id/join_ok"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -67,56 +68,62 @@
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:text="아기 생일"
+                android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_baby_name" />
 
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:text="아기이름"
+                android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_ip" />
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:text="IP캠 주소"
+                android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:text="이메일"
+                android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_pw" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="54dp"
                 android:text="아이디"
+                android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/edt_id"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
+                android:background="#FFFFFF"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
@@ -125,7 +132,8 @@
             <EditText
                 android:id="@+id/edt_pw"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
+                android:background="#FFFFFF"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/textView15"
@@ -134,7 +142,8 @@
             <EditText
                 android:id="@+id/edt_email"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
+                android:background="#FFFFFF"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/textView17"
@@ -143,7 +152,8 @@
             <EditText
                 android:id="@+id/edt_ip"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
+                android:background="#FFFFFF"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/textView18"
@@ -152,7 +162,8 @@
             <EditText
                 android:id="@+id/edt_baby_name"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
+                android:background="#FFFFFF"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/textView19"
@@ -161,7 +172,8 @@
             <EditText
                 android:id="@+id/edt_baby_birtday"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
+                android:background="#FFFFFF"
                 android:ems="10"
                 android:hint="ex) 19980815"
                 android:inputType="textPersonName"
@@ -171,10 +183,11 @@
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:text="비밀번호"
+                android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_id" />
 

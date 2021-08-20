@@ -1,6 +1,5 @@
 package com.example.aim_project;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 
 public class FragmentSound extends Fragment {
@@ -29,7 +27,7 @@ public class FragmentSound extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container,fragmentMain).commit();
+                        .replace(R.id.container2,fragmentMain).commit();
 
 
             }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF0E8"
-    tools:context=".FragmentMyinfo_3_yesLicense" >
+    tools:context=".FragmentMyinfo_3_yesLicense">
 
     <View
         android:id="@+id/textView52"

@@ -98,7 +98,7 @@ public class FragmentMyinfo_2_addBo extends Fragment {
                     public void onResponse(String response) {
                         //응답처리
                         Toast.makeText(getActivity().getApplicationContext(),"보험 정보가 등록되었습니다.",Toast.LENGTH_LONG).show();
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_2_ifBo).commit();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_2_ifBo).commit();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -164,7 +164,7 @@ public class FragmentMyinfo_2_addBo extends Fragment {
             @Override
             public void onClick(View v) {
 
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_2_noBo_).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_2_noBo_).commit();
 
             }
         });

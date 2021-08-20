@@ -124,7 +124,7 @@ public class FragmentMyinfo_1_ extends Fragment {
                     public void onResponse(String response) {
                         // 응답을 처리
                         Toast.makeText(getContext(),"변경이 완료되었습니다.",Toast.LENGTH_SHORT).show();
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo).commit();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -172,7 +172,7 @@ public class FragmentMyinfo_1_ extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"수정을 취소합니다",Toast.LENGTH_SHORT).show();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
             }
         });
 

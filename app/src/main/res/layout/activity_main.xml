@@ -14,7 +14,7 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottonbar"
+        android:id="@+id/menubar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FFF0E8"
@@ -28,7 +28,7 @@
         app:menu="@menu/menulist" />
 
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/container2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FFF0E8"
