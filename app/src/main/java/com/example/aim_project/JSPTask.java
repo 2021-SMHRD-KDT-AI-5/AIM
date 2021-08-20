@@ -12,10 +12,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Task extends AsyncTask<String, Void, String> {
+public class JSPTask extends AsyncTask<String, Void, String> {
     String sendMsg, receiveMsg;
 
-    Task(String sendmsg){
+    JSPTask(String sendmsg){
         this.sendMsg = sendmsg;
     }
 
