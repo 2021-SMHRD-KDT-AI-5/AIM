@@ -1,11 +1,24 @@
 package com.example.aim_project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.iid.FirebaseInstanceIdReceiver;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
+
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bnv;
@@ -22,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     FragmentMyinfo_4_ fragmentMyinfo_4_;
     FragmentMyinfo_5_ fragmentMyinfo_5_;
     FragmentMyinfo_6_ fragmentMyinfo_6_;
+
+//    private String TAG; //이 부분 수정
+private static final String TAG = "FMS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +56,28 @@ public class MainActivity extends AppCompatActivity {
         fragmentMyinfo_4_ = new FragmentMyinfo_4_();
         fragmentMyinfo_5_ = new FragmentMyinfo_5_();
         fragmentMyinfo_6_ = new FragmentMyinfo_6_();
+
+        FirebaseMessaging.getInstance().getToken().
+                addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete( Task<String> task) {
+                if (!task.isSuccessful()){
+                    Log.w(TAG,"Fetching FCM registration failed",task.getException());
+                    return;
+                }
+
+                String token = task.getResult();
+
+                String msg = getString(R.string.msg_token_fmt,token);
+                Log.d(TAG,msg);
+                Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+//        if(getIntent().getExtras() != null){
+//            Log.d("MainActivity",getIntent().getExtras().getString("test"));
+//        }
 
 
         getSupportFragmentManager().beginTransaction()
