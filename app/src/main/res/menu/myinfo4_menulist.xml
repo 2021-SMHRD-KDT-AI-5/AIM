@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/uq"
+        android:title="자주묻는질문" />
+    <item
+        android:id="@+id/oneQue"
+        android:title="1:1 상담문의" />
+    <item
+        android:id="@+id/oneQueHistory"
+        android:title="문의 내역" />
+    <item
+        android:id="@+id/chatbot"
+        android:title="챗봇상담" />
+</menu>

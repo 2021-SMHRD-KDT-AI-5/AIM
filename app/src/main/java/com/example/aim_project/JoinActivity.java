@@ -44,6 +44,15 @@ public class JoinActivity extends AppCompatActivity {
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
+        img_back.setOnClickListener(new View.OnClickListener() {    // 회원가입 취소
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent();
+                finish();
+            }
+        });
+
+
         //==================================================================================================
         //JSP 전달방식
         join_ok.setOnClickListener(new View.OnClickListener() {
@@ -81,9 +90,15 @@ public class JoinActivity extends AppCompatActivity {
                 }
 
             }
-        });
-        //==================================================================================================
 
+
+        });
+
+
+
+
+
+        //==================================================================================================
 ////        ==================================================================================================
 ////         서블릿 연계 전달방식
 //        // stringRequest생성
@@ -121,13 +136,6 @@ public class JoinActivity extends AppCompatActivity {
 //            }
 //        };
 //
-//        img_back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent it = new Intent();
-//                finish();
-//            }
-//        });
 //
 //        // join버튼 눌렀을 때 requestQueue에 StringRequest 전송
 //        join_ok.setOnClickListener(new View.OnClickListener() {

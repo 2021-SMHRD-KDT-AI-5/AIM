@@ -122,7 +122,7 @@ public class FragmentMyinfo_2_ifBo extends Fragment {
         img_backinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
 
             }
         });

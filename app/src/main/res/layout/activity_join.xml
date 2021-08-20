@@ -37,7 +37,7 @@
     <Button
         android:id="@+id/join_ok"
         android:layout_width="93dp"
-        android:layout_height="48dp"
+        android:layout_height="39dp"
         android:layout_marginBottom="50dp"
         android:background="#ffb191"
         android:text="가입완료"
@@ -120,8 +120,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
-                app:layout_constraintTop_toBottomOf="@+id/textView14"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
             <EditText
                 android:id="@+id/edt_pw"

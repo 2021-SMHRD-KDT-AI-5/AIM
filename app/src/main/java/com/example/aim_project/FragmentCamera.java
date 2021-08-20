@@ -21,7 +21,7 @@ public class FragmentCamera extends Fragment {
 
         WebView wb = view.findViewById(R.id.webview);
 
-        String address = "https://corona-live.com/";
+        String address = "http://172.30.1.14:5000/";
 
         WebSettings webSettings = wb.getSettings();
         webSettings.setJavaScriptEnabled(true);

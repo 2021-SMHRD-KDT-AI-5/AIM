@@ -31,7 +31,7 @@ public class FragmentMyinfo_3_finish extends Fragment {
             @Override
             public void onClick(View v) {
 
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo_3_yesLicense).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_3_yesLicense).commit();
 
             }
         });

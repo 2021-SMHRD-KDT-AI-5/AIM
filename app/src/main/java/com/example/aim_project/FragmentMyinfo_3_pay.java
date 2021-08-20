@@ -77,7 +77,7 @@ public class FragmentMyinfo_3_pay extends Fragment {
                     public void onResponse(String response) {
                         // 응답을 처리
                         if (response.equals("1")) {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_3_finish).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_3_finish).commit();
                         } else {
                             Toast.makeText(getContext(), "구매 실패", Toast.LENGTH_SHORT).show();
                         }

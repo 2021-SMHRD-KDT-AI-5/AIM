@@ -31,7 +31,7 @@ public class FragmentMyinfo_3_bye extends Fragment {
         btn_gomenu_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMyinfo_3_noLicense).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_3_noLicense).commit();
             }
         });
 

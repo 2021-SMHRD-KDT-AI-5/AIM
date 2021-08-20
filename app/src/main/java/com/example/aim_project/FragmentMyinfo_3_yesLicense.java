@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -171,7 +170,7 @@ public class FragmentMyinfo_3_yesLicense extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         // 응답을 처리
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo_3_bye).commit();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_3_bye).commit();
                     }
                 }, new Response.ErrorListener() {
             @Override

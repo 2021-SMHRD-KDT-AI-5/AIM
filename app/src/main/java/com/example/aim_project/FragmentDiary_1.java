@@ -40,7 +40,7 @@ public class FragmentDiary_1 extends Fragment {
 
 
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container,fragmentCalendar).commit();
+                        .replace(R.id.container2,fragmentCalendar).commit();
 
 
 
