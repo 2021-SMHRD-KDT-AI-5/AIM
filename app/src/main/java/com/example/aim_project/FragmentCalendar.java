@@ -73,7 +73,7 @@ public class FragmentCalendar extends Fragment {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 FragmentDiary_1 fragmentDiary_1 = new FragmentDiary_1();
                 fragmentDiary_1.setArguments(bundle);
-                transaction.replace(R.id.container,fragmentDiary_1);
+                transaction.replace(R.id.container2,fragmentDiary_1);
                 transaction.commit();
 
 

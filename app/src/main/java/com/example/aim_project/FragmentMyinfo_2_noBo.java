@@ -29,7 +29,7 @@ public class FragmentMyinfo_2_noBo extends Fragment {
             @Override
             public void onClick(View v) {
 
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMyinfo_2_addBo).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_2_addBo).commit();
 
             }
         });
