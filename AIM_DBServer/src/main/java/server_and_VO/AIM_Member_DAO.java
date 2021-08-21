@@ -60,13 +60,14 @@ public class AIM_Member_DAO { // 회원 DB관리 DAO클래스
 		conn();
 
 		int result = 0;
-		String sql = "insert into aim_members values(?,?,?,?)";
+		String sql = "insert into aim_members values(?,?,?,?,?)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
 			ps.setString(3, email);
 			ps.setString(4, ip);
+			ps.setString(5, "defult");
 
 			result = ps.executeUpdate();
 
@@ -124,8 +125,9 @@ public class AIM_Member_DAO { // 회원 DB관리 DAO클래스
 				String user_pw = rs.getString(2);
 				String user_email = rs.getString(3);
 				String user_ip = rs.getString(4);
+				String profile_pic = rs.getString(5);
 
-			    vo = new MemberVO(user_id,user_pw,user_email,user_ip);
+			    vo = new MemberVO(user_id,user_pw,user_email,user_ip,profile_pic);
 			    list.add(vo);
 
 			}

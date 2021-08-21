@@ -59,12 +59,13 @@ public class BabyInfoDAO { // 아기 정보 관리 DAO클래스
 		conn();
 
 		int result = 0;
-		String sql = "insert into baby_info values(?,?,?)";
+		String sql = "insert into baby_info values(?,?,?,?)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, babyName);
 			ps.setString(3, birthday);
+			ps.setString(4, "defult");
 
 			result = ps.executeUpdate();
 
@@ -96,8 +97,9 @@ public class BabyInfoDAO { // 아기 정보 관리 DAO클래스
 				String p_name = rs.getString(1);
 				String baby_name = rs.getString(2);
 				String baby_birtday = rs.getString(3);
+				String profile_pic = rs.getString(4);
 
-			    vo = new BabyVO(p_name,baby_name,baby_birtday);
+			    vo = new BabyVO(p_name,baby_name,baby_birtday,profile_pic);
 			    list.add(vo);
 
 			}

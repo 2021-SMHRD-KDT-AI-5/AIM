@@ -6,13 +6,15 @@ public class MemberVO {
 	private String user_pw;
 	private String user_email;
 	private String user_ip;
+	private String profile_pic;
 
-	public MemberVO(String user_id, String user_pw, String user_email, String user_ip) {
+	public MemberVO(String user_id, String user_pw, String user_email, String user_ip, String profile_pic) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;
 		this.user_email = user_email;
 		this.user_ip = user_ip;
+		this.profile_pic = profile_pic;
 	}
 
 	public String getUser_id() {
@@ -45,6 +47,14 @@ public class MemberVO {
 
 	public void setUser_ip(String user_ip) {
 		this.user_ip = user_ip;
+	}
+	
+	public String getProfile_pic() {
+		return profile_pic;
+	}
+
+	public void setProfile_pic(String profile_pic) {
+		this.profile_pic = profile_pic;
 	}
 
 }

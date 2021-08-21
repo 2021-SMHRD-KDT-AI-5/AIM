@@ -1,3 +1,8 @@
+drop table aim_members cascade constraints;
+drop table baby_info cascade constraints;
+drop table insurance cascade constraints;
+drop table license cascade constraints;
+
 select * from AIM_MEMBERS;
 
 select * from BABY_INFO;
@@ -7,19 +12,21 @@ delete from license;
 
 select * from license;
 
-CREATE TABLE AIM_MEMBERS(
+CREATE TABLE aim_members(
 	member_id VARCHAR2(30),
-    password VARCHAR2(30) NOT NULL,
+	password VARCHAR2(30) NOT NULL,
 	email VARCHAR2(30) NOT NULL,
-    ip VARCHAR2(30) NOT NULL,
-    CONSTRAINT members_pk PRIMARY KEY(member_id));
+	ip VARCHAR2(30) NOT NULL,
+	profile_pic VARCHAR2(3000),
+	CONSTRAINT members_pk PRIMARY KEY(member_id));
 
-CREATE TABLE BABY_INFO(
-    parent_id VARCHAR2(30),
-    baby_name VARCHAR2(30) NOT NULL,
-    birthday VARCHAR2(30) NOT NULL,
-    CONSTRAINT baby_info_fk FOREIGN KEY(parent_id)
-    REFERENCES aim_members(member_id));
+CREATE TABLE baby_info(
+	parent_id VARCHAR2(30),
+	baby_name VARCHAR2(30) NOT NULL,
+	birthday VARCHAR2(30) NOT NULL,
+	profile_pic VARCHAR2(3000),
+	CONSTRAINT baby_info_fk FOREIGN KEY(parent_id)
+	REFERENCES aim_members(member_id));
 
 CREATE TABLE baby_diary(
     member_id VARCHAR2(30) NOT NULL,
