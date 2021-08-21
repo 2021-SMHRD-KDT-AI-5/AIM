@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.Random;
+
 public class DBManager {
 
     DBHelper helper;
@@ -39,6 +41,22 @@ public class DBManager {
            login_success = true;
        }
        return login_success;
+    }
+
+    // 팁 가져오기 메소드
+    public String getTip(){
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Random rd = new Random();
+
+        int cnt = 0;
+        Cursor cursor = db.rawQuery("select tip from tips",null);
+        String[] tips = new String[2];
+
+        while(cursor.moveToNext()){
+            tips[cnt] = cursor.getString(0);
+            cnt++;
+        }
+        return tips[rd.nextInt(tips.length-1)];
     }
 
 

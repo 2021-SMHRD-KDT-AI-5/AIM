@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -25,7 +24,7 @@ public class FragmentMain extends Fragment {
 
     DBManager manager; // 로그인을 위한 DBManager 객체 생성
 
-    TextView tv_dday;
+    TextView tv_dday, tv_tip;
     int GET_GALLARY_IMAGE1 = 100;
     int GET_GALLARY_IMAGE2 = 200;
     ImageView img_parent_profile, img_baby_profile;
@@ -68,6 +67,7 @@ public class FragmentMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         tv_dday = view.findViewById(R.id.tv_dday);
+        tv_tip = view.findViewById(R.id.tv_tip);
         img_parent_profile = view.findViewById(R.id.img_parent_profile);
         img_baby_profile = view.findViewById(R.id.img_baby_profile);
 
@@ -78,11 +78,14 @@ public class FragmentMain extends Fragment {
 
         manager.loginOpUpdate(u_id);
 
+        // 팁 출력
+        tv_tip.setText(manager.getTip());
+
         // 로그인중인 회원 아이디 기반으로 아기 생일 가져오기
         String birthday = null;
 
         try {
-            birthday = new Task("getBirthday").execute("getBirthday",u_id).get();
+            birthday = new JSPTask("getBirthday").execute("getBirthday",u_id).get();
             birthday = Html.fromHtml(birthday).toString().trim(); // html태그 제거 및 공백 제거
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -91,6 +94,7 @@ public class FragmentMain extends Fragment {
         }
 
         tv_dday.setText("D + " + Dday_cal(birthday));
+//        tv_dday.setText(birthday);
 
         // 프로필 사진 클릭시 부모와 아이 프로필사진 바꾸기
         img_parent_profile.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +149,7 @@ public class FragmentMain extends Fragment {
             img_parent_profile.setImageURI(selectedImageUri);
         }else if(requestCode==GET_GALLARY_IMAGE2 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
             Uri selectedImageUri = data.getData();
-            img_parent_profile.setImageURI(selectedImageUri);
+            img_baby_profile.setImageURI(selectedImageUri);
         }
     }
 
