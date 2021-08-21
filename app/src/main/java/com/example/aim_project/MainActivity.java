@@ -3,7 +3,10 @@ package com.example.aim_project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.nfc.Tag;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.util.Log;
@@ -111,4 +114,5 @@ private static final String TAG = "FMS";
             }
         });
     }
+
 }

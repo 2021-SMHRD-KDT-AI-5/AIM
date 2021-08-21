@@ -39,6 +39,14 @@ public class JSPTask extends AsyncTask<String, Void, String> {
                 sendMsg = "task=" + strings[0] + "&id=" + strings[1] + "&pw=" + strings[2] + "&email=" + strings[3] + "&ip=" + strings[4];
             }else if(sendMsg.equals("joinBaby")){ // 아기정보 등록
                 sendMsg = "task=" + strings[0] + "&id=" + strings[1] + "&babyName=" + strings[2] + "&babyBirthday=" + strings[3];
+            }else if(sendMsg.equals("getParentProfilePic")){ // 부모 프로필사진 불러오기
+                sendMsg = "task=" + strings[0] + "&id=" + strings[1];
+            }else if(sendMsg.equals("getBabyProfilePic")){ // 아기 프로필사진 불러오기
+                sendMsg = "task=" + strings[0] + "&id=" + strings[1];
+            }else if(sendMsg.equals("setParentProfilePic")){ // 부모 프로필사진 등록
+                sendMsg = "task=" + strings[0] + "&id=" + strings[1] + "&profilePic=" + strings[2];
+            }else if(sendMsg.equals("setBabyProfilePic")){ // 아기 프로필사진 등록
+                sendMsg = "task=" + strings[0] + "&id=" + strings[1] + "&profilePic=" + strings[2];
             }
 
             osw.write(sendMsg);

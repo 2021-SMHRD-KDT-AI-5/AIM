@@ -66,7 +66,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_dday"
         app:layout_constraintEnd_toStartOf="@+id/tv_dday"
         app:layout_constraintTop_toTopOf="@+id/tv_dday"
-        tools:srcCompat="@drawable/ic_defult_profile" />
+        tools:srcCompat="@drawable/bill" />
 
     <ImageView
         android:id="@+id/img_baby_profile"
@@ -77,7 +77,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_dday"
         app:layout_constraintStart_toEndOf="@+id/tv_dday"
         app:layout_constraintTop_toTopOf="@+id/tv_dday"
-        tools:srcCompat="@drawable/ic_defult_profile" />
+        tools:srcCompat="@drawable/realart" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"

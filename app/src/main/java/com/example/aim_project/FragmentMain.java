@@ -1,5 +1,6 @@
 package com.example.aim_project;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,11 +9,13 @@ import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
@@ -28,6 +31,8 @@ public class FragmentMain extends Fragment {
     int GET_GALLARY_IMAGE1 = 100;
     int GET_GALLARY_IMAGE2 = 200;
     ImageView img_parent_profile, img_baby_profile;
+    String parentPic, babyPic;
+    String u_id;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,7 +79,7 @@ public class FragmentMain extends Fragment {
         manager = new DBManager(getActivity().getApplicationContext()); // 로그인을 위한 DBManager 객체 생성
 
         Intent it_login = getActivity().getIntent();
-        String u_id = it_login.getStringExtra("loginId");
+        u_id = it_login.getStringExtra("loginId");
 
         manager.loginOpUpdate(u_id);
 
@@ -83,7 +88,6 @@ public class FragmentMain extends Fragment {
 
         // 로그인중인 회원 아이디 기반으로 아기 생일 가져오기
         String birthday = null;
-
         try {
             birthday = new JSPTask("getBirthday").execute("getBirthday",u_id).get();
             birthday = Html.fromHtml(birthday).toString().trim(); // html태그 제거 및 공백 제거
@@ -94,7 +98,38 @@ public class FragmentMain extends Fragment {
         }
 
         tv_dday.setText("D + " + Dday_cal(birthday));
-//        tv_dday.setText(birthday);
+
+        // 부모와 아기 프로필사진 불러오기
+        try {
+            parentPic = new JSPTask("getParentProfilePic").execute("getParentProfilePic",u_id).get();
+            parentPic = Html.fromHtml(parentPic).toString().trim();
+            babyPic = new JSPTask("getBabyProfilePic").execute("getBabyProfilePic",u_id).get();
+            babyPic = Html.fromHtml(babyPic).toString().trim();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(!parentPic.equals("defult")){
+            try{
+                Toast.makeText(getContext(),parentPic,Toast.LENGTH_SHORT).show();
+                img_parent_profile.setImageURI(Uri.parse(parentPic));
+            } catch (Exception e){
+                Toast.makeText(getContext(),"프로필사진이 경로에 존재하지 않습니다.",Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            img_parent_profile.setImageResource(R.drawable.bill);
+        }
+
+        if(!babyPic.equals("defult")){
+            try{
+                img_baby_profile.setImageURI(Uri.parse(babyPic));
+            } catch (Exception e){
+                Toast.makeText(getContext(),"프로필사진이 경로에 존재하지 않습니다.",Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            img_baby_profile.setImageResource(R.drawable.realart);
+        }
 
         // 프로필 사진 클릭시 부모와 아이 프로필사진 바꾸기
         img_parent_profile.setOnClickListener(new View.OnClickListener() {
@@ -147,9 +182,27 @@ public class FragmentMain extends Fragment {
         if(requestCode==GET_GALLARY_IMAGE1 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
             Uri selectedImageUri = data.getData();
             img_parent_profile.setImageURI(selectedImageUri);
+
+            // 선택한 사진의 경로를 오라클DB에 저장
+            try {
+                String setParentProfile = new JSPTask("setParentProfilePic").execute("setParentProfilePic",u_id,selectedImageUri.toString()).get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }else if(requestCode==GET_GALLARY_IMAGE2 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
             Uri selectedImageUri = data.getData();
             img_baby_profile.setImageURI(selectedImageUri);
+
+            // 선택한 사진의 경로를 오라클DB에 저장
+            try {
+                String setBabyProfile = new JSPTask("setBabyProfilePic").execute("setBabyProfilePic",u_id,selectedImageUri.toString()).get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
