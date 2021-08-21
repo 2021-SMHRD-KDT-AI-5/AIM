@@ -82,19 +82,23 @@ public class JoinActivity extends AppCompatActivity {
                     String babyName = edt_baby_name.getText().toString();
                     String babyBirthday = edt_baby_birthday.getText().toString();
 
-                    // 회원가입 정보를 담아 Task로 전달
-                    joinMember = new JSPTask("joinMember").execute("joinMember", id, pw, email, ip).get();
+                    if(babyBirthday.length() != 8) { // 회원가입시 입력값이 형식에 맞는지 확인
+                        Toast.makeText(JoinActivity.this,"아기의 생일을 형식에 맞게 입력해주세요!",Toast.LENGTH_LONG).show();
+                    }else {
+                        // 회원가입 정보를 담아 Task로 전달
+                        joinMember = new JSPTask("joinMember").execute("joinMember", id, pw, email, ip).get();
 
-                    // 아기등록 정보를 담아 Task에 전달
-                    joinBaby = new JSPTask("joinBaby").execute("joinBaby", id, babyName, babyBirthday).get();
+                        // 아기등록 정보를 담아 Task에 전달
+                        joinBaby = new JSPTask("joinBaby").execute("joinBaby", id, babyName, babyBirthday).get();
 
-                    joinMember = Html.fromHtml(joinMember).toString().trim(); // html태그 제거 및 공백 제거
-                    joinBaby = Html.fromHtml(joinBaby).toString().trim(); // html태그 제거 및 공백 제거
+                        joinMember = Html.fromHtml(joinMember).toString().trim(); // html태그 제거 및 공백 제거
+                        joinBaby = Html.fromHtml(joinBaby).toString().trim(); // html태그 제거 및 공백 제거
 
-                    if(joinMember.equals("1") && joinBaby.equals("1")){
-                        showDialog01(); // 아래 showDialog01() 함수 호출
-                    }else{
-                        showDialog02(); // 아래 showDialog01() 함수 호출
+                        if (joinMember.equals("joinSuccess") && joinBaby.equals("1")) {
+                            showDialog01(); // 아래 showDialog01() 함수 호출
+                        } else if (joinMember.equals("idExist")) {
+                            showDialog02(); // 아래 showDialog01() 함수 호출
+                        }
                     }
 
                 } catch (Exception e) {

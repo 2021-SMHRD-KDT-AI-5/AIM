@@ -155,6 +155,7 @@
                 android:layout_height="43dp"
                 android:background="#FFFFFF"
                 android:ems="10"
+                android:hint="ex) 11.22.33.44"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/textView18"
                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
