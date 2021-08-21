@@ -36,7 +36,8 @@ public class FragmentCamera extends Fragment {
         wb.loadUrl(address);
         wb.setWebViewClient(new WebViewClient());
 
-        swc1.setChecked(true);
+        swc1.setChecked(false);
+        wb.setVisibility(View.INVISIBLE);
 
         // 스위치 리스너
         swc1.setOnCheckedChangeListener(new visibilitySwitchListener());
