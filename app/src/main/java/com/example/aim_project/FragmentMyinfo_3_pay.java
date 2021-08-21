@@ -71,7 +71,7 @@ public class FragmentMyinfo_3_pay extends Fragment {
 
         // 오라클 License DB에 insert
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-        StringRequest_insertLicense = new StringRequest(Request.Method.POST, "http://172.30.1.1:8086/AIM_DBServer/LicenseServlet",
+        StringRequest_insertLicense = new StringRequest(Request.Method.POST, "http://172.30.1.15:8090/AIM_DBServer/LicenseServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -191,6 +191,7 @@
                 android:layout_marginStart="136dp"
                 android:layout_marginTop="700dp"
                 android:text="구매하기"
+                android:background="@drawable/solid_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

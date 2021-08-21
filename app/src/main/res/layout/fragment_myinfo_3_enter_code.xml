@@ -107,6 +107,7 @@
         android:layout_marginStart="88dp"
         android:layout_marginTop="488dp"
         android:text="취소"
+        android:background="@drawable/solid_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -117,6 +118,7 @@
         android:layout_marginStart="212dp"
         android:layout_marginTop="488dp"
         android:text="사용"
+        android:background="@drawable/solid_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -145,6 +147,7 @@
         android:layout_marginStart="144dp"
         android:layout_marginTop="388dp"
         android:text="조회"
+        android:background="@drawable/solid_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -8,6 +8,54 @@
     android:background="#FFF0E8"
     tools:context=".FragmentMyinfo_2_noBo" >
 
+    <View
+        android:id="@+id/textView59"
+        android:layout_width="375dp"
+        android:layout_height="2px"
+        android:layout_marginTop="276dp"
+        android:background="#DCDBDB"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/textView60"
+        android:layout_width="375dp"
+        android:layout_height="2px"
+        android:layout_marginTop="384dp"
+        android:background="#DCDBDB"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/textView58"
+        android:layout_width="0dp"
+        android:layout_height="2px"
+        android:layout_marginTop="168dp"
+        android:background="#615E5E"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/textView61"
+        android:layout_width="0dp"
+        android:layout_height="2px"
+        android:layout_marginTop="580dp"
+        android:background="#615E5E"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/img_backinfo"
         android:layout_width="65dp"

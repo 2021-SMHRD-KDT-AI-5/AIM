@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -39,8 +40,8 @@ public class FragmentMyinfo extends Fragment {
     FragmentMyinfo_6_ fragmentMyinfo_6_;
     FragmentMain fragmentMain;
     FragmentMyinfo_2_ifBo fragmentMyinfo_2_ifBo;
-    Button btn_1,btn_2,btn_3,btn_4,btn_5,btn_6;
-    ImageView img1,img_aimlogo_m;
+    TextView btn_1,btn_2,btn_3,btn_4,btn_5,btn_6;
+    ImageView img1,img_aimlogo_m,img_back_info;
 
     RequestQueue requestQueue;
     StringRequest StringRequest_selectBo; // 정보 조회
@@ -72,6 +73,7 @@ public class FragmentMyinfo extends Fragment {
 
         img1 = view.findViewById(R.id.img1);
         img_aimlogo_m = view.findViewById(R.id.img_aimlogo_m);
+        img_back_info = view.findViewById(R.id.img_back_info);
 
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
@@ -81,7 +83,7 @@ public class FragmentMyinfo extends Fragment {
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
-        StringRequest_selectBo = new StringRequest(Request.Method.POST,"http://172.30.1.1:8086/AIM_DBServer/BoSelectServlet",
+        StringRequest_selectBo = new StringRequest(Request.Method.POST,"http://172.30.1.15:8090/AIM_DBServer/BoSelectServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -106,7 +108,7 @@ public class FragmentMyinfo extends Fragment {
             }
         };
 
-        StringRequest_LicenseCheck = new StringRequest(Request.Method.POST,"http://172.30.1.1:8086/AIM_DBServer/LicenseServlet",
+        StringRequest_LicenseCheck = new StringRequest(Request.Method.POST,"http://172.30.1.15:8090/AIM_DBServer/LicenseServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -173,9 +175,17 @@ public class FragmentMyinfo extends Fragment {
         img_aimlogo_m.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMain).commit();
             }
         });
+
+        img_back_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMain).commit();
+            }
+        });
+
 
 
         return view;
