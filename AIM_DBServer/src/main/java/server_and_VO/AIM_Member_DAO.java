@@ -56,21 +56,36 @@ public class AIM_Member_DAO { // 회원 DB관리 DAO클래스
 	}
 
 	// 회원가입(리턴값 1이면 성공)
-	public int join(String id, String pw, String email, String ip) {
+	public String join(String id, String pw, String email, String ip) {
 		conn();
 
-		int result = 0;
+		String result = "joinSuccess";
+		
+		String sql2 = "select * from aim_members where member_id = ?";
+		
 		String sql = "insert into aim_members values(?,?,?,?,?)";
+		
+		
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql2);
 			ps.setString(1, id);
-			ps.setString(2, pw);
-			ps.setString(3, email);
-			ps.setString(4, ip);
-			ps.setString(5, "defult");
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result = "idExist";
+			}else {
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, id);
+				ps.setString(2, pw);
+				ps.setString(3, email);
+				ps.setString(4, ip);
+				ps.setString(5, "defult");
 
-			result = ps.executeUpdate();
-
+				ps.executeUpdate();
+			}
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -155,6 +170,32 @@ public class AIM_Member_DAO { // 회원 DB관리 DAO클래스
 			ps.setString(2, email);
 			ps.setString(3, ip);
 			ps.setString(4, id);
+			
+			cnt = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		
+		return cnt;
+	}
+	
+	public int update_profile_pic(String id, String profilePic) {// 부모 프로필사진 저장
+		
+		conn();
+		
+		int cnt = 0;
+		
+		String sql = "update aim_members set profile_pic = ? where member_id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, profilePic);
+			ps.setString(2, id);
 			
 			cnt = ps.executeUpdate();
 

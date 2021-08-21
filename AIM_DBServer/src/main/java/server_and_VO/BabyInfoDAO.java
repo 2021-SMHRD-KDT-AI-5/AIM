@@ -80,53 +80,53 @@ public class BabyInfoDAO { // 아기 정보 관리 DAO클래스
 	}
 
 	public ArrayList<BabyVO> select_baby(String id) {
-		
+
 		conn();
-		
+
 		ArrayList<BabyVO> list = new ArrayList<>();
 		BabyVO vo = null;
-		
+
 		String sql = "select * from BABY_INFO where parent_id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
-			
+
 			rs = ps.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				String p_name = rs.getString(1);
 				String baby_name = rs.getString(2);
 				String baby_birtday = rs.getString(3);
 				String profile_pic = rs.getString(4);
 
-			    vo = new BabyVO(p_name,baby_name,baby_birtday,profile_pic);
-			    list.add(vo);
+				vo = new BabyVO(p_name, baby_name, baby_birtday, profile_pic);
+				list.add(vo);
 
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		close();
-		
+
 		return list;
 	}
-	
-	public int update_baby(String id, String baby_name , String baby_bday) {
-		
+
+	public int update_baby(String id, String baby_name, String baby_bday) {
+
 		conn();
-		
+
 		int cnt = 0;
-		
+
 		String sql = "update BABY_INFO set baby_name = ?,birthday = ? where parent_id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
+
 			ps.setString(1, baby_name);
 			ps.setString(2, baby_bday);
 			ps.setString(3, id);
-			
+
 			cnt = ps.executeUpdate();
 
 		} catch (SQLException e) {
@@ -135,12 +135,37 @@ public class BabyInfoDAO { // 아기 정보 관리 DAO클래스
 		} finally {
 			close();
 		}
-		
+
 		System.out.println("cnt는 몇개 ? : " + cnt);
-		System.out.println("id = "+id);
-		System.out.println("name = "+baby_name);
-		System.out.println("day = "+baby_bday);
-		
+		System.out.println("id = " + id);
+		System.out.println("name = " + baby_name);
+		System.out.println("day = " + baby_bday);
+
+		return cnt;
+	}
+
+	public int update_profile_pic(String id, String profilePic) {// 아기 프로필사진 저장
+
+		conn();
+
+		int cnt = 0;
+
+		String sql = "update baby_info set profile_pic = ? where parent_id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, profilePic);
+			ps.setString(2, id);
+
+			cnt = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
 		return cnt;
 	}
 }

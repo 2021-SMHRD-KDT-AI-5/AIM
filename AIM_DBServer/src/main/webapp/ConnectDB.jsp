@@ -25,20 +25,42 @@
 	
 		returns = babyDao.select_baby(id).get(0).getBirthday();
 		
-	}else if(task.equals("joinMember")){
+	}else if(task.equals("joinMember")){ // 회원가입
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String email = request.getParameter("email");
 		String ip = request.getParameter("ip");
 		
-		returns = Integer.toString(memberDao.join(id, pw, email, ip));
+		returns = memberDao.join(id, pw, email, ip);
 		
-	}else if(task.equals("joinBaby")){
+	}else if(task.equals("joinBaby")){ // 아기 등록
 		String id = request.getParameter("id");
 		String babyName = request.getParameter("babyName");
 		String babyBirthday = request.getParameter("babyBirthday");
 		
 		returns = Integer.toString(babyDao.join(id, babyName, babyBirthday));
+		
+	}else if(task.equals("getParentProfilePic")){ // 부모 프로필사진 불러오기
+		String id = request.getParameter("id");
+		
+		returns = memberDao.select_member(id).get(0).getProfile_pic();
+		
+	}else if(task.equals("getBabyProfilePic")){ // 아기 프로필사진 불러오기
+		String id = request.getParameter("id");
+		
+		returns = babyDao.select_baby(id).get(0).getProfile_pic();
+		
+	}else if(task.equals("setParentProfilePic")){ // 부모 프로필사진 저장
+		String id = request.getParameter("id");
+		String profilePic = request.getParameter("profilePic");
+		
+		returns = Integer.toString(memberDao.update_profile_pic(id, profilePic));
+		
+	}else if(task.equals("setBabyProfilePic")){ // 아기 프로필사진 저장
+		String id = request.getParameter("id");
+		String profilePic = request.getParameter("profilePic");
+		
+		returns = Integer.toString(babyDao.update_profile_pic(id, profilePic));
 		
 	}
 	
