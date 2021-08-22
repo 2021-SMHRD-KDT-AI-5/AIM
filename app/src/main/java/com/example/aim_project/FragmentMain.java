@@ -26,6 +26,7 @@ import static android.app.Activity.RESULT_OK;
 public class FragmentMain extends Fragment {
 
     DBManager manager; // 로그인을 위한 DBManager 객체 생성
+    String TAG;
 
     TextView tv_dday, tv_tip;
     int GET_GALLARY_IMAGE1 = 100;
@@ -82,6 +83,7 @@ public class FragmentMain extends Fragment {
         u_id = it_login.getStringExtra("loginId");
 
         manager.loginOpUpdate(u_id);
+
 
         // 팁 출력
         tv_tip.setText(manager.getTip());
