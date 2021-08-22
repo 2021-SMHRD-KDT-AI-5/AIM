@@ -15,6 +15,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE loginset(recent_user_id VARCHAR2(30) NOT NULL, remember_id VARCHAR2(10), autologin VARCHAR2(10))");
 
+        db.execSQL("CREATE TABLE arlam_id(member_id VARCHAR2(30))");
+
+
         db.execSQL("CREATE TABLE aim_members(\n" +
                 "member_id VARCHAR2(30),\n" +
                 "password VARCHAR2(30) NOT NULL,\n" +
@@ -24,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE baby_info(\n" +
                 "parent_id VARCHAR2(30),\n" +
-                "baby_name VARCHAR2(30) NOT NULL,\n" +
+//                "baby_name VARCHAR2(30) NOT NULL,\n" +
                 "birthday VARCHAR2(30) NOT NULL,\n" +
                 "CONSTRAINT baby_info_fk FOREIGN KEY(parent_id)\n" +
                 "REFERENCES aim_members(member_id)\n" +
@@ -45,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "baby_name VARCHAR2(30) NOT NULL,\n" +
                 "alarm_date VARCHAR2(30) NOT NULL,\n" +
                 "cry_move VARCHAR2(30) NOT NULL,\n" +
-                "contents VARCHAR2(200) NOT NULL,\n" +
+//                "contents VARCHAR2(200) NOT NULL,\n" +
                 "CONSTRAINT alarm_log_fk FOREIGN KEY(member_id)\n" +
                 "REFERENCES aim_members(member_id),\n" +
                 "CONSTRAINT alarm_log_ck CHECK(cry_move IN('cry','move'))\n" +
@@ -55,8 +58,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE tips(\n" +
                 "tip VARCHAR2(3000) NOT NULL\n" +
                 ")");
-
-
 
     }
 

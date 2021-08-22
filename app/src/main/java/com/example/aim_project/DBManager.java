@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class DBManager {
@@ -20,6 +21,94 @@ public class DBManager {
         SQLiteDatabase db = helper.getWritableDatabase();
         db.execSQL("insert into aim_members values('"+ id +"','"+ pw +"','"+ email +"','"+ ip +"')");
     }
+
+    // 알림 메소드
+    public void arlam(String id,String baby_name,String date,String cry_move){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("insert into alarm_log values('"+ id +"','"+ baby_name +"','"+ date +"','"+ cry_move +"')");
+
+    }
+
+    // 알림 조회 메소드
+    public ArrayList<String[]> arlam_select_info(){
+        ArrayList<String[]> info = new ArrayList<>();
+
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from alarm_log",null);
+
+        while (cursor.moveToNext()){
+            String [] list = new String[4];
+            list[0] = cursor.getString(0);
+            list[1] = cursor.getString(1);
+            list[2] = cursor.getString(2);
+            list[3] = cursor.getString(3);
+
+            info.add(list);
+        }
+        return info;
+    }
+
+
+
+
+    //  알림 아이디
+    public void arlam_id(String id){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("insert into arlam_id values('"+ id +"')");
+    }
+    public void arlamUpdate(String id){   // 아이디를 최근 로그인한 아이디로 변경
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("update arlam_id set member_id ='"+id+"'");
+        db.close();
+    }
+
+    public boolean arlam_id_Check(){
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("select member_id from arlam_id",null);
+
+        // 로그인 옵션 있는지/없는지 여부(있으면 true, 없으면 false)
+        boolean login_success = false;
+
+        if(cursor.moveToNext()){ // 내장 DB에 이미 로그인옵션 테이블이 있을경우
+            login_success = true;
+        }
+        return login_success;
+    }
+
+    public String arlam_select(){
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        String a = "";
+        Cursor cursor = db.rawQuery("select member_id from arlam_id",null);
+        while(cursor.moveToNext()){
+            a = cursor.getString(0);
+        }
+        return a;
+    }
+
+    public String baby_name_select(String id){
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        String a = "";
+        Cursor cursor = db.rawQuery("select baby_name from baby_info where parent_id = '"+id+"'",null);
+        while(cursor.moveToNext()){
+            a = cursor.getString(0);
+        }
+
+
+        return a;
+    }
+
+
+
+
+
+
+
+
+
+
 
     // 아기 정보 신규 저장 메소드
     public void baby_join(String id, String babyName, String babyBirthday){

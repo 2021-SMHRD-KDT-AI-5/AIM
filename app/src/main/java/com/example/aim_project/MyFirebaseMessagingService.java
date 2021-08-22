@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -18,6 +19,10 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  * NOTE: There can only be one service in each app that receives FCM messages. If multiple
@@ -33,6 +38,16 @@ import androidx.work.WorkManager;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
+    DBManager manager;
+    String message;
+    String list;
+    private String getTime() {
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String getTime = dateFormat.format(date);
+        return getTime; }
+
 
     /**
      * Called when message is received.
@@ -60,8 +75,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+        manager = new DBManager(getApplicationContext());
         Log.d(TAG, "From: " + remoteMessage.getFrom());
-        sendNotification(remoteMessage.getData().toString());
+        if (remoteMessage.getData().toString() != null){
+            list = manager.arlam_select();
+//            String baby_name = manager.baby_name_select(list);
+
+            String a = "";
+            manager.arlam(list,a,getTime(),message);
+            sendNotification(remoteMessage.getData().toString());
+
+        }
+//        sendNotification(remoteMessage.getData().toString());
+
+
+
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
@@ -149,10 +177,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private void sendNotification(String messageBody) {
 
 
+        message = messageBody;
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
+
+
 
         String channelId = getString(R.string.default_notification_channel_id);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -160,10 +191,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle(" 새로운 알림이 도착했습니다 !")
-                        .setContentText("아이 움직임 없음.")
+                        .setContentText(messageBody)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
                         .setContentIntent(pendingIntent);
+
+
+        // 로그인 한 아이디 정보 - >  select  -  > id
+        // id - >
+
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -179,4 +215,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
+
+
+
+
+
 }
+
+
+
