@@ -103,7 +103,7 @@ public class FragmentMyinfo_2_addBo extends Fragment {
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
-        StringRequest_bohuminsert = new StringRequest(Request.Method.POST,"http://172.30.1.15:8090/AIM_DBServer/BohumServlet",
+        StringRequest_bohuminsert = new StringRequest(Request.Method.POST,"http://project-db-stu.ddns.net:1524/AIM_DBServer/BohumServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -84,7 +84,7 @@ public class FragmentMyinfo_1_ extends Fragment {
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
-        StringRequest_selectInfo = new StringRequest(Request.Method.POST,"http://172.30.1.15:8090/AIM_DBServer/SelectServlet",
+        StringRequest_selectInfo = new StringRequest(Request.Method.POST,"http://project-db-stu.ddns.net:1524/AIM_DBServer/SelectServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -130,7 +130,7 @@ public class FragmentMyinfo_1_ extends Fragment {
         requestQueue.add(StringRequest_selectInfo);
 
 
-        StringRequest_update = new StringRequest(Request.Method.POST,"http://172.30.1.15:8090/AIM_DBServer/UpdateServlet",
+        StringRequest_update = new StringRequest(Request.Method.POST,"http://project-db-stu.ddns.net:1524/AIM_DBServer/UpdateServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
