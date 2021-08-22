@@ -3,6 +3,7 @@ package com.example.aim_project;
 import android.os.AsyncTask;
 import android.text.Html;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -64,7 +65,7 @@ public class JSPTask extends AsyncTask<String, Void, String> {
                 }
                 receiveMsg = buffer.toString();
             } else {
-                // 통신 실패
+                Log.i("JSP Connect", "JSP 연결 실패!");// 통신 실패
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
