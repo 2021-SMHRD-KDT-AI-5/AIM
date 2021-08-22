@@ -187,11 +187,14 @@
             <Button
                 android:id="@+id/btn_buy"
                 android:layout_width="132dp"
-                android:layout_height="65dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="136dp"
                 android:layout_marginTop="700dp"
-                android:text="구매하기"
                 android:background="@drawable/solid_button"
+                android:text="구매하기"
+                android:textColor="#534949"
+                android:textSize="16dp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

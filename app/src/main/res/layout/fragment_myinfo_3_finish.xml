@@ -57,12 +57,15 @@
 
     <Button
         android:id="@+id/btn_gomenu_"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="148dp"
         android:layout_marginTop="448dp"
-        android:text="확인"
         android:background="@drawable/solid_button"
+        android:text="확인"
+        android:textColor="#503E3E"
+        android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

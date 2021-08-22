@@ -1,31 +1,28 @@
 package com.example.aim_project;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +37,7 @@ public class FragmentMyinfo_5_ extends Fragment {
     Boolean check2 = false;
     DBManager manager;
     String[] list = new String[3];
+    Dialog dilaog01,dilaog02,dilaog03;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +50,18 @@ public class FragmentMyinfo_5_ extends Fragment {
         ck_remember_id = view.findViewById(R.id.ck_remember_id);
         ck_autologin = view.findViewById(R.id.ck_autologin);
         manager = new DBManager(getActivity().getApplicationContext());
+
+        dilaog01 = new Dialog(getActivity());       // Dialog 초기화
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        dilaog01.setContentView(R.layout.dialog08_ins_no_yes2);         // xml 레이아웃 파일과 연결
+
+        dilaog02 = new Dialog(getActivity());
+        dilaog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog02.setContentView(R.layout.dialog09_ins_delete);
+
+        dilaog03 = new Dialog(getActivity());
+        dilaog03.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog03.setContentView(R.layout.dialog10_ins_no);
 
 
         Intent it_login = getActivity().getIntent();
@@ -90,9 +100,9 @@ public class FragmentMyinfo_5_ extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         if(response.equals("1")){
-                            Toast.makeText(getActivity().getApplicationContext(),"등록하신 보험 정보가 초기화 되었습니다.",Toast.LENGTH_SHORT).show();
+                            showDialog02();
                         }else{
-                            Toast.makeText(getActivity().getApplicationContext(),"등록된 보험 정보가 없습니다.",Toast.LENGTH_SHORT).show();
+                            showDialog03();
                         }
 
                     }
@@ -124,8 +134,7 @@ public class FragmentMyinfo_5_ extends Fragment {
         txt_delete_bo.setOnClickListener(new View.OnClickListener() {  // 보험정보 초기화 버튼
             @Override
             public void onClick(View v) {
-                // 나중에 다이얼로그로 초기화 할건지 확인하고 하기
-                requestQueue.add(StringRequest_deleteBo);
+                showDialog01();
             }
         });
 
@@ -155,12 +164,55 @@ public class FragmentMyinfo_5_ extends Fragment {
             }
         });
 
-
-
-
-
-
-
         return view;
+
     }
+
+    // dialog01을 디자인하는 함수
+    public void showDialog01() {
+        dilaog01.show();
+
+        dilaog01.findViewById(R.id.btn_nope).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog01.dismiss();          // 다이얼로그 닫기
+            }
+        });
+
+        dilaog01.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                requestQueue.add(StringRequest_deleteBo);
+                dilaog01.dismiss();
+            }
+        });
+    }
+
+
+    public void showDialog02(){
+        dilaog02.show();
+
+        dilaog02.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                dilaog02.dismiss();
+            }
+        });
+    }
+
+
+    public void showDialog03(){
+        dilaog03.show();
+
+        dilaog03.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                dilaog03.dismiss();
+            }
+        });
+    }
+
 }

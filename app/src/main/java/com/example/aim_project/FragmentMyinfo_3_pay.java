@@ -1,5 +1,6 @@
 package com.example.aim_project;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,6 +41,7 @@ public class FragmentMyinfo_3_pay extends Fragment {
     StringRequest StringRequest_insertLicense;
     FragmentMyinfo_3_finish fragmentMyinfo_3_finish;
     String str = "";
+    Dialog dilaog01,dilaog02,dilaog03;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +56,18 @@ public class FragmentMyinfo_3_pay extends Fragment {
         fragmentMyinfo_3_finish = new FragmentMyinfo_3_finish();
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
+
+        dilaog01 = new Dialog(getActivity());
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog01.setContentView(R.layout.dialog11_select_li);
+
+        dilaog02 = new Dialog(getActivity());
+        dilaog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog02.setContentView(R.layout.dialog12_checkop);
+
+        dilaog03 = new Dialog(getActivity());
+        dilaog03.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog03.setContentView(R.layout.dialog13_paylicense);
 
         // 정액권 선택 스피너
         ArrayAdapter monthAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.test4, android.R.layout.simple_spinner_dropdown_item);
@@ -134,13 +149,13 @@ public class FragmentMyinfo_3_pay extends Fragment {
             @Override
             public void onClick(View v) {
                 if (str.equals("정액권 선택")) {  // 정액권을 안골랐다면
-                    Toast.makeText(getContext(), "정액권을 선택해주세요", Toast.LENGTH_SHORT).show();
+                    showDialog01();
                 } else {       // 정액권 골랐다면
 
                     if (ck1.isChecked() == true && ck2.isChecked() == true) {     // 약관3개 모두 동의했다면~
-                        requestQueue.add(StringRequest_insertLicense);
+                        showDialog03();
                     } else {
-                        Toast.makeText(getContext(), "약관에 동의해주세요", Toast.LENGTH_SHORT).show();
+                        showDialog02();
                     }
                 }
 
@@ -150,4 +165,50 @@ public class FragmentMyinfo_3_pay extends Fragment {
 
         return view;
     }
+
+
+    // dialog01을 디자인하는 함수
+    public void showDialog01() {
+        dilaog01.show();
+
+        dilaog01.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dilaog01.dismiss();          // 다이얼로그 닫기
+            }
+        });
+    }
+
+    public void showDialog02(){
+        dilaog02.show();
+
+        dilaog02.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog02.dismiss();          // 다이얼로그 닫기
+            }
+        });
+    }
+
+    public void showDialog03(){
+        dilaog03.show();
+
+        dilaog03.findViewById(R.id.btn_nope).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog03.dismiss();          // 다이얼로그 닫기
+            }
+        });
+
+        dilaog03.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                requestQueue.add(StringRequest_insertLicense);
+                dilaog03.dismiss();
+
+            }
+        });
+    }
+
 }

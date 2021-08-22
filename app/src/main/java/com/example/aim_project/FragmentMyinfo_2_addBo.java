@@ -1,5 +1,6 @@
 package com.example.aim_project;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,6 +43,7 @@ public class FragmentMyinfo_2_addBo extends Fragment {
     Button btn_ok,btn_no,btn_lookup;
     RequestQueue requestQueue;
     StringRequest StringRequest_bohuminsert; // 정보 조회
+    Dialog dilaog01,dilaog02;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +64,14 @@ public class FragmentMyinfo_2_addBo extends Fragment {
 
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");   // 보험 db 등록에 필요할 id
+
+        dilaog01 = new Dialog(getActivity());       // Dialog 초기화
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        dilaog01.setContentView(R.layout.dialog06_ins_no_yes);         // xml 레이아웃 파일과 연결
+
+        dilaog02 = new Dialog(getActivity());
+        dilaog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog02.setContentView(R.layout.dialog07_addok);
 
         // 스피너 1 (보험사)
         ArrayAdapter monthAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.test, android.R.layout.simple_spinner_dropdown_item);
@@ -97,8 +108,7 @@ public class FragmentMyinfo_2_addBo extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         //응답처리
-                        Toast.makeText(getActivity().getApplicationContext(),"보험 정보가 등록되었습니다.",Toast.LENGTH_LONG).show();
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_2_ifBo).commit();
+
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -152,7 +162,7 @@ public class FragmentMyinfo_2_addBo extends Fragment {
             public void onClick(View v) {
                 String str = txt_jo.getText().toString();
                 if(str.equals("조회가 성공적으로 되었습니다.")){ // 조회 했으면 등록해버리기
-                    requestQueue.add(StringRequest_bohuminsert);
+                    showDialog01();
 
                 }else{  // 조회 안했으면 토스메세지
                     Toast.makeText(getActivity().getApplicationContext(),"조회를 먼저 진행해주세요.",Toast.LENGTH_SHORT).show();
@@ -170,6 +180,42 @@ public class FragmentMyinfo_2_addBo extends Fragment {
         });
 
         return view;
+    }
+
+    // dialog01을 디자인하는 함수
+    public void showDialog01() {
+        dilaog01.show();
+
+        dilaog01.findViewById(R.id.btn_nope).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog01.dismiss();          // 다이얼로그 닫기
+            }
+        });
+
+        dilaog01.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                requestQueue.add(StringRequest_bohuminsert);
+                dilaog01.dismiss();
+                showDialog02();
+            }
+        });
+    }
+
+
+    public void showDialog02(){
+        dilaog02.show();
+
+        dilaog02.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_2_ifBo).commit();
+                dilaog02.dismiss();
+            }
+        });
     }
 
 

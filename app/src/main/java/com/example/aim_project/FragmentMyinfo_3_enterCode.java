@@ -1,5 +1,6 @@
 package com.example.aim_project;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
     FragmentMyinfo_3_finish fragmentMyinfo_3_finish;
     RequestQueue requestQueue;
     StringRequest StringRequest_insertLicense;
+    Dialog dilaog01,dilaog02;
 
     // 정액권 코드 정의
     String[] codepo1 = {"000000"};                         // 코드입력 첫번째칸
@@ -61,6 +64,14 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
 
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
+
+        dilaog01 = new Dialog(getActivity());
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog01.setContentView(R.layout.dialog16_usecode);
+
+        dilaog02 = new Dialog(getActivity());
+        dilaog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog02.setContentView(R.layout.dialog17_checkcode);
 
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         StringRequest_insertLicense = new StringRequest(Request.Method.POST, "http://172.30.1.15:8090/AIM_DBServer/LicenseServlet",
@@ -148,30 +159,57 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
                 String codePo1 = edt_codePo1.getText().toString();
                 String codePo2 = edt_codePo2.getText().toString();
                 String codePo3 = edt_codePo3.getText().toString();
-                String result = "";
 
                 if (codePo1.equals(codepo1[0]) && codePo2.equals(codepo2[0])) {   // 존재하는 코드를 제대로 입력한경우
                     if (codePo3.equals(codepo3[0])) {
-                        result = "서비스 오픈 이벤트 코드(1개월)";
-                        Toast.makeText(getContext(), result + "를 사용합니다.", Toast.LENGTH_SHORT).show();
-                        requestQueue.add(StringRequest_insertLicense);
+                        showDialog01();
                     } else if (codePo3.equals(codepo3[1])) {
-                        result = "보험사 연계 코드(6개월)";
-                        Toast.makeText(getContext(), result + "를 사용합니다.", Toast.LENGTH_SHORT).show();
-                        requestQueue.add(StringRequest_insertLicense);
+                        showDialog01();
                     } else if (codePo3.equals(codepo3[2])) {
-                        result = "보험사 연계 코드(12개월)";
-                        Toast.makeText(getContext(), result + "를 사용합니다.", Toast.LENGTH_SHORT).show();
-                        requestQueue.add(StringRequest_insertLicense);
+                        showDialog01();
                     }else{
-                        Toast.makeText(getContext(), "존재하지 않거나 이미 사용된 코드입니다.", Toast.LENGTH_SHORT).show();
+                        showDialog02();
                     }
                 } else {  // 입력을 잘못한경우
-                    Toast.makeText(getContext(), "존재하지 않거나 이미 사용된 코드입니다.", Toast.LENGTH_SHORT).show();
+                    showDialog02();
                 }
             }
         });
 
         return view;
     }
+
+    public void showDialog01(){
+        dilaog01.show();
+
+        dilaog01.findViewById(R.id.btn_nope).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog01.dismiss();          // 다이얼로그 닫기
+            }
+        });
+
+        dilaog01.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                requestQueue.add(StringRequest_insertLicense);
+                dilaog01.dismiss();
+
+            }
+        });
+    }
+
+    public void showDialog02(){
+        dilaog02.show();
+
+        dilaog02.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                dilaog02.dismiss();
+            }
+        });
+    }
+
 }

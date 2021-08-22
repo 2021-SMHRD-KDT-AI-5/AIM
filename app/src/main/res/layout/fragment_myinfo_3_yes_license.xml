@@ -151,6 +151,9 @@
         android:layout_marginTop="4dp"
         android:background="@drawable/solid_button"
         android:text="환불 or 취소"
+        android:textColor="#473939"
+        android:textSize="15dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView56" />

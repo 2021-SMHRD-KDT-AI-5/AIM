@@ -33,7 +33,7 @@
         android:id="@+id/txt_main3"
         android:layout_width="380dp"
         android:layout_height="59dp"
-        android:layout_marginBottom="432dp"
+        android:layout_marginBottom="396dp"
         android:gravity="center"
         android:text="이용권 코드 18자리를 입력 해주세요."
         android:textSize="23dp"
@@ -43,37 +43,12 @@
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="32dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="244dp"
-        android:layout_marginBottom="372dp"
-        android:background="#FFFFFF"
-        android:gravity="center"
-        android:text="-"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txt_codeCheck"
-        android:layout_width="335dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="308dp"
-        android:gravity="center"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/edt_codePo3"
         android:layout_width="95dp"
         android:layout_height="52dp"
         android:layout_marginStart="268dp"
-        android:layout_marginBottom="372dp"
+        android:layout_marginBottom="336dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
@@ -91,7 +66,68 @@
         android:layout_width="32dp"
         android:layout_height="52dp"
         android:layout_marginStart="132dp"
-        android:layout_marginBottom="372dp"
+        android:layout_marginBottom="336dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:text="-"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_codePo2"
+        android:layout_width="95dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginBottom="336dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="000000"
+        android:inputType="textPersonName"
+        android:textColor="#302F2F"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_codePo1"
+        android:layout_width="95dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="336dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="000000"
+        android:inputType="textPersonName"
+        android:textColor="#302F2F"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_codeCheck"
+        android:layout_width="335dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="340dp"
+        android:gravity="center"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="32dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginBottom="336dp"
         android:background="#FFFFFF"
         android:gravity="center"
         android:text="-"
@@ -105,49 +141,12 @@
         android:layout_width="105dp"
         android:layout_height="46dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginTop="476dp"
+        android:background="@drawable/solid_button_no"
         android:text="취소"
-        android:background="@drawable/solid_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_codeUse"
-        android:layout_width="105dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="212dp"
-        android:layout_marginTop="488dp"
-        android:text="사용"
-        android:background="@drawable/solid_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edt_codePo1"
-        android:layout_width="95dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="372dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="000000"
-        android:inputType="textPersonName"
-        android:textColor="#302F2F"
-        android:textSize="20dp"
+        android:textColor="#4A3D3D"
+        android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_codeCheck"
-        android:layout_width="116dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="388dp"
-        android:text="조회"
-        android:background="@drawable/solid_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -156,29 +155,39 @@
         android:layout_width="267dp"
         android:layout_height="42dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="556dp"
+        android:layout_marginTop="532dp"
         android:gravity="center"
         android:text="코드는 한번 등록시 재사용이 불가능 하며, 환불정책에 적용되지 않습니다. "
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_codePo2"
-        android:layout_width="95dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginBottom="372dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="000000"
-        android:inputType="textPersonName"
-        android:textColor="#302F2F"
-        android:textSize="20dp"
+    <Button
+        android:id="@+id/btn_codeUse"
+        android:layout_width="105dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="476dp"
+        android:background="@drawable/solid_button"
+        android:text="사용"
+        android:textColor="#4A3D3D"
+        android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_codeCheck"
+        android:layout_width="116dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="404dp"
+        android:background="@drawable/solid_button"
+        android:text="조회"
+        android:textColor="#4A3D3D"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

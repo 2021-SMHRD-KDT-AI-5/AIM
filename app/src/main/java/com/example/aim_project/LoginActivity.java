@@ -21,8 +21,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -170,11 +168,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    // dialog02을 디자인하는 함수
+    // dialog01을 디자인하는 함수
     public void showDialog01() {
         dilaog01.show();
 
-        dilaog01.findViewById(R.id.btn_yes).setOnClickListener(new View.OnClickListener() {
+        dilaog01.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 원하는 기능 구현

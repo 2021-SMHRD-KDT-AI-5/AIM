@@ -59,6 +59,7 @@ public class StartActivity extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) { // 애니메이션이 끝났을 때
                 Intent To_login = new Intent(StartActivity.this, LoginActivity.class);
                 startActivity(To_login);
+                finish();
             }
 
             @Override

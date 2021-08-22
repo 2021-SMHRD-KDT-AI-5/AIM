@@ -190,7 +190,7 @@ public class JoinActivity extends AppCompatActivity {
             }
         });*/
         // 네 버튼
-        dilaog01.findViewById(R.id.btn_yes).setOnClickListener(new View.OnClickListener() {
+        dilaog01.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 원하는 기능 구현
@@ -206,7 +206,7 @@ public class JoinActivity extends AppCompatActivity {
     public void showDialog02() {
         dilaog02.show();
 
-        dilaog02.findViewById(R.id.btn_yes).setOnClickListener(new View.OnClickListener() {
+        dilaog02.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 원하는 기능 구현

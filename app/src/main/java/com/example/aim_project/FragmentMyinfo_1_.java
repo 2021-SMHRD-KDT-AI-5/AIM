@@ -1,10 +1,12 @@
 package com.example.aim_project;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,10 +40,12 @@ public class FragmentMyinfo_1_ extends Fragment {
     DBManager manager;
     ArrayList<MemberVO> temp = new ArrayList<>();
     FragmentMyinfo fragmentMyinfo;
+    FragmentMyinfo_1_ fragmentMyinfo_1_;
 
     RequestQueue requestQueue;
     StringRequest StringRequest_selectInfo; // 정보 조회
     StringRequest StringRequest_update; // 정보 수정
+    Dialog dilaog01,dilaog02;
 
     //String user_id = getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE).getString("id", "none");
     // key : 데이터 꺼낼 때 사용하는 값 ,    // defValue : 키값에 해당하는 데이터가 없을 때 사용할 기본값*/
@@ -52,6 +56,7 @@ public class FragmentMyinfo_1_ extends Fragment {
         View view = inflater.inflate(R.layout.fragment_myinfo_1_, container, false);
         manager = new DBManager(getActivity().getApplicationContext());
         fragmentMyinfo = new FragmentMyinfo();
+        fragmentMyinfo_1_ = new FragmentMyinfo_1_();
 
         edt_id = view.findViewById(R.id.edt_id);
         edt_pw = view.findViewById(R.id.edt_pw);
@@ -68,6 +73,13 @@ public class FragmentMyinfo_1_ extends Fragment {
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
 
+        dilaog01 = new Dialog(getActivity());       // Dialog 초기화
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        dilaog01.setContentView(R.layout.dialog04_no_yes);         // xml 레이아웃 파일과 연결
+
+        dilaog02 = new Dialog(getActivity());
+        dilaog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog02.setContentView(R.layout.dialog05_refactor);
 
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
@@ -123,8 +135,7 @@ public class FragmentMyinfo_1_ extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         // 응답을 처리
-                        Toast.makeText(getContext(),"변경이 완료되었습니다.",Toast.LENGTH_SHORT).show();
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
+
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -180,8 +191,7 @@ public class FragmentMyinfo_1_ extends Fragment {
         change_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                requestQueue.add(StringRequest_update);
+                showDialog01();
             }
         });
 
@@ -190,7 +200,6 @@ public class FragmentMyinfo_1_ extends Fragment {
             @Override
             public void onClick(View v) {
 
-
             }
         });
 
@@ -198,4 +207,41 @@ public class FragmentMyinfo_1_ extends Fragment {
 
         return view;
     }
+
+    // dialog01을 디자인하는 함수
+    public void showDialog01() {
+        dilaog01.show();
+
+        dilaog01.findViewById(R.id.btn_nope).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog01.dismiss();          // 다이얼로그 닫기
+            }
+        });
+
+        dilaog01.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                requestQueue.add(StringRequest_update);
+                dilaog01.dismiss();
+                showDialog02();
+            }
+        });
+    }
+
+
+    public void showDialog02(){
+        dilaog02.show();
+
+        dilaog02.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
+                dilaog02.dismiss();
+            }
+        });
+    }
+
 }

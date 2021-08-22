@@ -62,7 +62,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/ic_defult_profile"
+        android:src="@drawable/diary"
         app:layout_constraintBottom_toBottomOf="@+id/tv_dday"
         app:layout_constraintEnd_toStartOf="@+id/tv_dday"
         app:layout_constraintTop_toTopOf="@+id/tv_dday"

@@ -12,7 +12,7 @@
         android:id="@+id/txt_main2"
         android:layout_width="319dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="392dp"
+        android:layout_marginBottom="288dp"
         android:gravity="center"
         android:text="서비스 이용을 위해서는          정액권 이 필요합니다."
         android:textSize="25dp"
@@ -46,23 +46,29 @@
 
     <Button
         android:id="@+id/btn_buyLicense"
-        android:layout_width="126dp"
+        android:layout_width="130dp"
         android:layout_height="51dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="380dp"
-        android:text="정액권 구입"
+        android:layout_marginTop="400dp"
         android:background="@drawable/solid_button"
+        android:text="정액권 구입"
+        android:textColor="#5E4949"
+        android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_enterCode"
-        android:layout_width="126dp"
+        android:layout_width="130dp"
         android:layout_height="51dp"
         android:layout_marginStart="216dp"
-        android:layout_marginTop="380dp"
-        android:text="코드입력"
+        android:layout_marginTop="400dp"
         android:background="@drawable/solid_button"
+        android:text="코드입력"
+        android:textColor="#5E4949"
+        android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

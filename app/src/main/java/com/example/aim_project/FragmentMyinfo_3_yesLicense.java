@@ -1,5 +1,6 @@
 package com.example.aim_project;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -37,6 +39,8 @@ public class FragmentMyinfo_3_yesLicense extends Fragment {
     StringRequest StringRequest_deleteLicense;
     FragmentMyinfo_3_bye fragmentMyinfo_3_bye;
     String[] str = new String[3];
+    Dialog dilaog01,dilaog02;
+    String code ="n";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +54,14 @@ public class FragmentMyinfo_3_yesLicense extends Fragment {
         txt_LicenseType = view.findViewById(R.id.txt_LicenseType);
         btn_delete = view.findViewById(R.id.btn_delete);
         fragmentMyinfo_3_bye = new FragmentMyinfo_3_bye();
+
+        dilaog01 = new Dialog(getActivity());
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog01.setContentView(R.layout.dialog14_undo);
+
+        dilaog02 = new Dialog(getActivity());
+        dilaog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog02.setContentView(R.layout.dialog15_undo_code);
 
 
         Intent it_login = getActivity().getIntent();
@@ -111,23 +123,29 @@ public class FragmentMyinfo_3_yesLicense extends Fragment {
                             if (str[0].equals("01")) {
                                 txt_LicenseType.setText("1개월 정액권(쿠폰)");
                                 btn_delete.setText("해지");
+                                code = "y";
                             } else if (str[0].equals("06")) {
                                 txt_LicenseType.setText("6개월 정액권(쿠폰)");
                                 btn_delete.setText("해지");
+                                code = "y";
                             } else if (str[0].equals("12")) {
                                 txt_LicenseType.setText("12개월 정액권(쿠폰)");
                                 btn_delete.setText("해지");
+                                code = "y";
                             }
                         } else {
                             if (str[0].equals("01")) {
                                 txt_LicenseType.setText("1개월 정액권");
                                 btn_delete.setText("환불");
+                                code = "n";
                             } else if (str[0].equals("06")) {
                                 txt_LicenseType.setText("6개월 정액권");
                                 btn_delete.setText("환불");
+                                code = "n";
                             } else if (str[0].equals("12")) {
                                 txt_LicenseType.setText("12개월 정액권");
                                 btn_delete.setText("환불");
+                                code = "n";
                             }
                         }
                     }
@@ -209,11 +227,58 @@ public class FragmentMyinfo_3_yesLicense extends Fragment {
         btn_delete.setOnClickListener(new View.OnClickListener() {      // 환불 or 취소버튼 (나중에 다이얼로그로 한번더 확인 ㄱ)
             @Override
             public void onClick(View v) {
-                requestQueue.add(StringRequest_deleteLicense);
+                if(code.equals("y")){
+                    showDialog02();
+                }else{
+                    showDialog01();
+                }
             }
         });
 
 
         return view;
     }
+
+    public void showDialog01(){
+        dilaog01.show();
+
+        dilaog01.findViewById(R.id.btn_nope).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog01.dismiss();          // 다이얼로그 닫기
+            }
+        });
+
+        dilaog01.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                requestQueue.add(StringRequest_deleteLicense);
+                dilaog01.dismiss();
+
+            }
+        });
+    }
+
+    public void showDialog02(){
+        dilaog02.show();
+
+        dilaog02.findViewById(R.id.btn_nope).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog02.dismiss();          // 다이얼로그 닫기
+            }
+        });
+
+        dilaog02.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                requestQueue.add(StringRequest_deleteLicense);
+                dilaog02.dismiss();
+
+            }
+        });
+    }
+
 }
