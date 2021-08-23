@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ggugg/AndroidStudioProjects/AIM/app/src/main/res/drawable/background.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ggugg/AndroidStudioProjects/AIM/app/src/main/res/drawable/background_rounding.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ggugg/AndroidStudioProjects/AIM/app/src/main/res/drawable/ic_launcher_background.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ggugg/AndroidStudioProjects/AIM/app/src/main/res/drawable/solid_button.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ggugg/AndroidStudioProjects/AIM/app/src/main/res/layout/activity_join.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ggugg/AndroidStudioProjects/AIM/app/src/main/res/layout/dialog01_suc.xml" value="0.3591485507246377" />
         <entry key="..\:/Users/ggugg/AndroidStudioProjects/AIM/app/src/main/res/layout/dialog02_fail.xml" value="0.3591485507246377" />

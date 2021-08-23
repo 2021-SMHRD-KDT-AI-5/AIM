@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        stringRequest_login = new StringRequest(Request.Method.POST, "http://172.30.1.15:8090/AIM_DBServer/LoginServlet",
+        stringRequest_login = new StringRequest(Request.Method.POST, "http://192.168.0.119:8092/AIM_DBServer/LoginServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

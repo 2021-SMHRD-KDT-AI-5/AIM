@@ -3,9 +3,14 @@ package com.example.aim_project;
 import android.Manifest;
 import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,12 +40,9 @@ public class FragmentMain extends Fragment {
     TextView tv_dday, tv_tip;
     int GET_GALLARY_IMAGE1 = 100;
     int GET_GALLARY_IMAGE2 = 200;
-    int CODE_ALBUM_REQUEST = 111;
     ImageView img_parent_profile, img_baby_profile;
     String parentPic, babyPic;
     String u_id;
-    Button btn_addPic;
-    RecyclerView rv_pictures;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,6 +76,7 @@ public class FragmentMain extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,18 +86,11 @@ public class FragmentMain extends Fragment {
         tv_tip = view.findViewById(R.id.tv_tip);
         img_parent_profile = view.findViewById(R.id.img_parent_profile);
         img_baby_profile = view.findViewById(R.id.img_baby_profile);
-        btn_addPic = view.findViewById(R.id.btn_addPic);
-        rv_pictures = view.findViewById(R.id.rv_pictures);
-
-        // 리싸이클러뷰를 가로로 설정
-        rv_pictures.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL, false));
 
         manager = new DBManager(getActivity().getApplicationContext()); // 로그인을 위한 DBManager 객체 생성
 
         Intent it_login = getActivity().getIntent();
         u_id = it_login.getStringExtra("loginId");
-
-        manager.loginOpUpdate(u_id);
 
         manager.loginOpUpdate(u_id);
 
@@ -105,6 +101,12 @@ public class FragmentMain extends Fragment {
 //        }else{  // 없을경우 (앱 처음시작시)
 //            manager.arlam_id(u_id);
 //        }
+
+        // 프로필사진 모서리 둥글게 적용
+        img_parent_profile.setBackground(new ShapeDrawable(new OvalShape()));
+        img_baby_profile.setClipToOutline(true);
+
+        출처: https://chocorolls.tistory.com/47 [초코롤의 개발이야기]
 
         // 팁 출력
         tv_tip.setText(manager.getTip());
@@ -176,19 +178,6 @@ public class FragmentMain extends Fragment {
         });
         //=========================================================================================================
 
-        // 사진 리스트(리싸이클러 뷰) 관련
-        //=========================================================================================================
-        // 사진추가 버튼 클릭시 갤러리 열기
-        btn_addPic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
-                startActivityForResult(intent,CODE_ALBUM_REQUEST);
-            }
-        });
-        //=========================================================================================================
         return view;
 
     }
@@ -242,26 +231,7 @@ public class FragmentMain extends Fragment {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            // 리사이클러 뷰에 들어갈 이미지 가져오기
-        }else if(requestCode==CODE_ALBUM_REQUEST && resultCode==RESULT_OK && data != null){
-            ArrayList<Uri> uriList = new ArrayList<>();
-            if(data.getClipData() != null){
-                ClipData clipData = data.getClipData();
-                if(clipData.getItemCount() > 10){ // 선택한 이미지가 10개를 초과했을 경우
-                    Toast.makeText(getActivity().getApplicationContext(),"사진은 10개까지 선택 가능합니다.",Toast.LENGTH_SHORT).show();
-                    return;
-                }else if(clipData.getItemCount()==1){ // 다중 선택에서 하나만 선택한 경우
-                    Uri filePath = clipData.getItemAt(0).getUri();
-                    uriList.add(filePath);
-                } else if (clipData.getItemCount() > 1 && clipData.getItemCount() <= 10) { // 2개 이상 10개 이하로 선택했을 경우
-                    for(int i = 0; i < clipData.getItemCount(); i++){
-                        uriList.add(clipData.getItemAt(i).getUri());
-                    }
-                }
-            }
-            // 리사이클러 뷰에 보여주기
-            PictureAdapter adapter = new PictureAdapter(uriList,getActivity().getApplicationContext());
-            rv_pictures.setAdapter(adapter);
+
         }
     }
 

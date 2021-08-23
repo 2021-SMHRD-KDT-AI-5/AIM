@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="팁 나오는 곳"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="우리 아이와"
-        android:textSize="15dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tip" />
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="함께한지"
-        android:textSize="15dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_meet"
         app:layout_constraintStart_toStartOf="@+id/tv_meet"
         app:layout_constraintTop_toBottomOf="@+id/tv_meet" />
@@ -60,38 +60,39 @@
         android:id="@+id/tv_dday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="D+135"
-        android:textSize="25dp"
+        android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_meet" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_meet2" />
 
     <ImageView
         android:id="@+id/img_parent_profile"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/diary"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_dday"
-        app:layout_constraintEnd_toStartOf="@+id/tv_dday"
-        app:layout_constraintTop_toTopOf="@+id/tv_dday"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dday"
         app:srcCompat="@drawable/parents"
         tools:srcCompat="@drawable/parents" />
 
     <ImageView
         android:id="@+id/img_baby_profile"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:src="@drawable/img2"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_dday"
-        app:layout_constraintStart_toEndOf="@+id/tv_dday"
-        app:layout_constraintTop_toTopOf="@+id/tv_dday"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dday"
         app:srcCompat="@drawable/baby"
         tools:srcCompat="@drawable/baby" />
 
@@ -101,26 +102,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_pictures"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_parent_profile" />
-
-    <Button
-        android:id="@+id/btn_addPic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="사진 추가"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_pictures" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
