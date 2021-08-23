@@ -95,7 +95,7 @@ public class FragmentMyinfo_5_ extends Fragment {
 
 
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-        StringRequest_deleteBo = new StringRequest(Request.Method.POST,"http://project-db-stu.ddns.net:1524/AIM_DBServer/BoDeleteServlet",
+        StringRequest_deleteBo = new StringRequest(Request.Method.POST,"http://172.30.1.15:8090/AIM_DBServer/BoDeleteServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
