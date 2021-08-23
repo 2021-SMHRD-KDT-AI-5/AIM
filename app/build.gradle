@@ -41,6 +41,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-messaging-directboot:20.2.0'
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
+    implementation "androidx.cardview:cardview:1.0.0"
 
 // test
 //    implementation 'com.google.firebase:firebase-messaging-directboot:20.2.0'

@@ -70,7 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_meet2" />
 
-    <ImageView
+<!--    <ImageView
         android:id="@+id/img_parent_profile"
         android:layout_width="180dp"
         android:layout_height="180dp"
@@ -81,20 +81,68 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_dday"
         app:srcCompat="@drawable/parents"
-        tools:srcCompat="@drawable/parents" />
+        tools:srcCompat="@drawable/parents" />-->
 
-    <ImageView
-        android:id="@+id/img_baby_profile"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBackgroundView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dday"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/img_parent_profile"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:background="@drawable/round"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:srcCompat="@drawable/parents"
+            tools:srcCompat="@drawable/parents" />
+    </androidx.cardview.widget.CardView>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_baby_profile"-->
+<!--        android:layout_width="180dp"-->
+<!--        android:layout_height="180dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:src="@drawable/img2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_dday"-->
+<!--        app:srcCompat="@drawable/baby"-->
+<!--        tools:srcCompat="@drawable/baby" />-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBackgroundView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:src="@drawable/img2"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_dday"
-        app:srcCompat="@drawable/baby"
-        tools:srcCompat="@drawable/baby" />
+        tools:ignore="DuplicateIds,MissingConstraints">
+
+        <ImageView
+            android:id="@+id/img_baby_profile"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:background="@drawable/round"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:srcCompat="@drawable/baby"
+            tools:srcCompat="@drawable/baby" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
