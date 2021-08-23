@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE baby_info(\n" +
                 "parent_id VARCHAR2(30),\n" +
-//                "baby_name VARCHAR2(30) NOT NULL,\n" +
+                "baby_name VARCHAR2(30) NOT NULL,\n" +
                 "birthday VARCHAR2(30) NOT NULL,\n" +
                 "CONSTRAINT baby_info_fk FOREIGN KEY(parent_id)\n" +
                 "REFERENCES aim_members(member_id)\n" +
@@ -50,8 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "cry_move VARCHAR2(30) NOT NULL,\n" +
 //                "contents VARCHAR2(200) NOT NULL,\n" +
                 "CONSTRAINT alarm_log_fk FOREIGN KEY(member_id)\n" +
-                "REFERENCES aim_members(member_id),\n" +
-                "CONSTRAINT alarm_log_ck CHECK(cry_move IN('cry','move'))\n" +
+                "REFERENCES aim_members(member_id)\n" +
                 ")");
 
 

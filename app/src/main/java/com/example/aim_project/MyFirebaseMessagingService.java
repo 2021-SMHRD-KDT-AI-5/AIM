@@ -21,71 +21,46 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
-/**
- * NOTE: There can only be one service in each app that receives FCM messages. If multiple
- * are declared in the Manifest then the first one will be chosen.
- *
- * In order to make this Java sample functional, you must remove the following from the Kotlin messaging
- * service in the AndroidManifest.xml:
- *
- * <intent-filter>
- *   <action android:name="com.google.firebase.MESSAGING_EVENT" />
- * </intent-filter>
- */
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
     DBManager manager;
     String message;
+
+    //yyyy-MM-dd
     String list;
     private String getTime() {
         long now = System.currentTimeMillis();
         Date date = new Date(now);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
         String getTime = dateFormat.format(date);
         return getTime; }
 
 
-    /**
-     * Called when message is received.
-     *
-     * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
-     */
     // [START receive_message]
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        // [START_EXCLUDE]
-        // There are two types of messages data messages and notification messages. Data messages
-        // are handled
-        // here in onMessageReceived whether the app is in the foreground or background. Data
-        // messages are the type
-        // traditionally used with GCM. Notification messages are only received here in
-        // onMessageReceived when the app
-        // is in the foreground. When the app is in the background an automatically generated
-        // notification is displayed.
-        // When the user taps on the notification they are returned to the app. Messages
-        // containing both notification
-        // and data payloads are treated as notification messages. The Firebase console always
-        // sends notification
-        // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
-        // [END_EXCLUDE]
 
+        ArrayList<AlarmVO> alram_list = new ArrayList<>();
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         manager = new DBManager(getApplicationContext());
         Log.d(TAG, "From: " + remoteMessage.getFrom());
-        if (remoteMessage.getData().toString() != null){
+        remoteMessage.getData().toString();
             list = manager.arlam_select();
 //            String baby_name = manager.baby_name_select(list);
 
+//            sendNotification(message);
             String a = "";
-            manager.arlam(list,a,getTime(),message);
+            manager.arlam(list,a,getTime(),remoteMessage.getData().toString());
             sendNotification(remoteMessage.getData().toString());
 
-        }
+
 //        sendNotification(remoteMessage.getData().toString());
 
 
@@ -112,36 +87,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             sendNotification(remoteMessage.getNotification().getBody());
         }
 
-        // Also if you intend on generating your own notifications as a result of a received FCM
-        // message, here is where that should be initiated. See sendNotification method below.
     }
-    // [END receive_message]
 
-
-    // [START on_new_token]
-    /**
-     * There are two scenarios when onNewToken is called:
-     * 1) When a new token is generated on initial app startup
-     * 2) Whenever an existing token is changed
-     * Under #2, there are three scenarios when the existing token is changed:
-     * A) App is restored to a new device
-     * B) User uninstalls/reinstalls the app
-     * C) User clears app data
-     */
     @Override
     public void onNewToken(String token) {
         Log.d(TAG, "Refreshed token: " + token);
 
-        // If you want to send messages to this application instance or
-        // manage this apps subscriptions on the server side, send the
-        // FCM registration token to your app server.
+
         sendRegistrationToServer(token);
     }
     // [END on_new_token]
 
-    /**
-     * Schedule async work using WorkManager.
-     */
+
     private void scheduleJob() {
         // [START dispatch_job]
         OneTimeWorkRequest work = new OneTimeWorkRequest.Builder(MyWorker.class)
@@ -150,30 +107,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // [END dispatch_job]
     }
 
-    /**
-     * Handle time allotted to BroadcastReceivers.
-     */
+
     private void handleNow() {
         Log.d(TAG, "Short lived task is done.");
     }
 
-    /**
-     * Persist token to third-party servers.
-     *
-     * Modify this method to associate the user's FCM registration token with any
-     * server-side account maintained by your application.
-     *
-     * @param token The new token.
-     */
+
     private void sendRegistrationToServer(String token) {
         // TODO: Implement this method to send token to your app server.
     }
 
-    /**
-     * Create and show a simple notification containing the received FCM message.
-     *
 
-     */
     private void sendNotification(String messageBody) {
 
 
