@@ -203,7 +203,7 @@ public class FragmentMain extends Fragment {
         Calendar today = Calendar.getInstance(); //현재 오늘 날짜
         Calendar dday = Calendar.getInstance();
 
-        dday.set(birthdayYear, birthdayMonth+1, birthdayDate);
+        dday.set(birthdayYear, birthdayMonth, birthdayDate);
 
         long day = dday.getTimeInMillis()/86400000;
         long tday = today.getTimeInMillis()/86400000;

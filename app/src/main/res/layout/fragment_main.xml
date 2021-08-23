@@ -27,7 +27,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="팁 나오는 곳"
-        android:textSize="20dp"
+        android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView10" />
@@ -36,22 +37,33 @@
         android:id="@+id/tv_meet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="우리 아이와 함께한지"
-        android:textSize="18dp"
+        android:text="우리 아이와"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tip" />
 
     <TextView
+        android:id="@+id/tv_meet2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="함께한지"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_meet"
+        app:layout_constraintStart_toStartOf="@+id/tv_meet"
+        app:layout_constraintTop_toBottomOf="@+id/tv_meet" />
+
+    <TextView
         android:id="@+id/tv_dday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="D+135"
-        android:textSize="40dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,9 +71,10 @@
 
     <ImageView
         android:id="@+id/img_parent_profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
         android:src="@drawable/diary"
         app:layout_constraintBottom_toBottomOf="@+id/tv_dday"
         app:layout_constraintEnd_toStartOf="@+id/tv_dday"
@@ -71,9 +84,10 @@
 
     <ImageView
         android:id="@+id/img_baby_profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
         android:src="@drawable/img2"
         app:layout_constraintBottom_toBottomOf="@+id/tv_dday"
         app:layout_constraintStart_toEndOf="@+id/tv_dday"
