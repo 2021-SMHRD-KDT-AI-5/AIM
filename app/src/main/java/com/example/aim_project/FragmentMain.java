@@ -102,11 +102,9 @@ public class FragmentMain extends Fragment {
 //            manager.arlam_id(u_id);
 //        }
 
-        // 프로필사진 모서리 둥글게 적용
-        img_parent_profile.setBackground(new ShapeDrawable(new OvalShape()));
-        img_baby_profile.setClipToOutline(true);
-
-        출처: https://chocorolls.tistory.com/47 [초코롤의 개발이야기]
+//        // 프로필사진 모서리 둥글게 적용
+//        img_parent_profile.setBackground(new ShapeDrawable(new OvalShape()));
+//        img_baby_profile.setClipToOutline(true);
 
         // 팁 출력
         tv_tip.setText(manager.getTip());
