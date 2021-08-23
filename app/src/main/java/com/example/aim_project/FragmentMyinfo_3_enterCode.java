@@ -74,7 +74,7 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
         dilaog02.setContentView(R.layout.dialog17_checkcode);
 
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-        StringRequest_insertLicense = new StringRequest(Request.Method.POST, "http://project-db-stu.ddns.net:1524/AIM_DBServer/LicenseServlet",
+        StringRequest_insertLicense = new StringRequest(Request.Method.POST, "http://172.30.1.15:8090/AIM_DBServer/LicenseServlet",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
