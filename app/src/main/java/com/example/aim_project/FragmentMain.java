@@ -94,17 +94,13 @@ public class FragmentMain extends Fragment {
 
         manager.loginOpUpdate(u_id);
 
-//        boolean test = manager.arlam_id_Check();
-//
-//        if (test == true){  // 이미 있을경우
-//            manager.arlamUpdate(u_id);
-//        }else{  // 없을경우 (앱 처음시작시)
-//            manager.arlam_id(u_id);
-//        }
+        boolean test = manager.arlam_id_Check();
 
-//        // 프로필사진 모서리 둥글게 적용
-//        img_parent_profile.setBackground(new ShapeDrawable(new OvalShape()));
-//        img_baby_profile.setClipToOutline(true);
+        if (test == true){  // 이미 있을경우
+            manager.arlamUpdate(u_id);
+        }else{  // 없을경우 (앱 처음시작시)
+            manager.arlam_id(u_id);
+        }
 
         // 팁 출력
         tv_tip.setText(manager.getTip());
