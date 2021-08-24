@@ -51,13 +51,13 @@ public class alarmAdapter extends BaseAdapter {
         if (convertView == null){
             convertView = inflater.inflate(layout,parent,false);
         }
-        TextView tv_alarm_id = convertView.findViewById(R.id.tv_alarm_id);
-        TextView tv_alarm_name = convertView.findViewById(R.id.tv_alarm_name);
+//        TextView tv_alarm_id = convertView.findViewById(R.id.tv_alarm_id);
+//        TextView tv_alarm_name = convertView.findViewById(R.id.tv_alarm_name);
         TextView tv_alarm_date = convertView.findViewById(R.id.tv_alarm_date);
         TextView tv_alarm_contents = convertView.findViewById(R.id.tv_alarm_contents);
 
-        tv_alarm_id.setText(data.get(position).getId());
-        tv_alarm_name.setText(data.get(position).getBabyName());
+//        tv_alarm_id.setText(data.get(position).getId());
+//        tv_alarm_name.setText(data.get(position).getBabyName());
         tv_alarm_date.setText(data.get(position).getDate());
         tv_alarm_contents.setText(data.get(position).getCry_move());
 

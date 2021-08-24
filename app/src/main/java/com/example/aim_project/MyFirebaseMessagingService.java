@@ -53,6 +53,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         remoteMessage.getData().toString();
             list = manager.arlam_select();
+           String b = "";
 //            String baby_name = manager.baby_name_select(list);
 
 //            sendNotification(message);
