@@ -8,7 +8,7 @@
     <item
         android:id="@+id/oneQue"
         android:icon="@drawable/sound"
-        android:title="아이소리" />
+        android:title="알림로그" />
     <item
         android:id="@+id/diary1"
         android:icon="@drawable/diary"
