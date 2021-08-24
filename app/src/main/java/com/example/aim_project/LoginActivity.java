@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
         dilaog01 = new Dialog(LoginActivity.this);       // Dialog 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
-        dilaog01.setContentView(R.layout.dialog02_fail);             // xml 레이아웃 파일과 연결
+        dilaog01.setContentView(R.layout.dialog00_login_fail);             // xml 레이아웃 파일과 연결
 
         // requestQueue 생성
         requestQueue = Volley.newRequestQueue(getApplicationContext());
