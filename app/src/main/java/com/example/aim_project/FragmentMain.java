@@ -3,6 +3,7 @@ package com.example.aim_project;
 import android.Manifest;
 import android.content.ClipData;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 import static android.app.Activity.RESULT_OK;
@@ -103,7 +105,7 @@ public class FragmentMain extends Fragment {
         }
 
         // 팁 출력
-        tv_tip.setText(manager.getTip());
+        tv_tip.setText(Tips.getTip());
 
         // 로그인중인 회원 아이디 기반으로 아기 생일 가져오기
         String birthday = null;
@@ -116,7 +118,7 @@ public class FragmentMain extends Fragment {
             e.printStackTrace();
         }
 
-        tv_dday.setText("D + " + Dday_cal(birthday));
+        tv_dday.setText(Dday_cal(birthday)+"일째♡");
 
         // 프로필사진 관련
         //=========================================================================================================

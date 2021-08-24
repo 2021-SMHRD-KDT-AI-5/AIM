@@ -10,25 +10,25 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="228dp"
-        android:layout_height="148dp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
         android:src="@drawable/logomain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <WebView
         android:id="@+id/webview"
-        android:layout_width="412dp"
-        android:layout_height="434dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
         app:layout_constraintVertical_bias="1.0">
 
     </WebView>
@@ -39,23 +39,23 @@
         android:layout_height="29dp"
         android:src="@drawable/reft"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView6"
-        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintVertical_bias="0.05"
+        app:srcCompat="@drawable/back_button"
+        tools:srcCompat="@drawable/back_button" />
 
     <Switch
         android:id="@+id/swc1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:showText="false"
         android:text="영상 재생중"
-        app:layout_constraintBottom_toTopOf="@+id/webview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
         tools:checked="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
