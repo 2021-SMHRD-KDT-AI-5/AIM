@@ -141,7 +141,7 @@ public class FragmentMain extends Fragment {
                 Toast.makeText(getContext(),"프로필사진이 경로에 존재하지 않습니다.",Toast.LENGTH_SHORT).show();
             }
         }else{
-            img_parent_profile.setImageResource(R.drawable.parents);
+            img_parent_profile.setImageResource(R.drawable.p1);
         }
 
         if(!babyPic.equals("defult")){
@@ -151,7 +151,7 @@ public class FragmentMain extends Fragment {
                 Toast.makeText(getContext(),"프로필사진이 경로에 존재하지 않습니다.",Toast.LENGTH_SHORT).show();
             }
         }else {
-            img_baby_profile.setImageResource(R.drawable.baby);
+            img_baby_profile.setImageResource(R.drawable.p2);
         }
 
         // 프로필 사진 클릭시 부모와 아이 프로필사진 바꾸기

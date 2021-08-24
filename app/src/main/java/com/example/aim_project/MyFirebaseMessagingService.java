@@ -32,12 +32,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     DBManager manager;
     String message;
 
-    //yyyy-MM-dd , ss
+    //yyyy-MM-dd
     String list;
     private String getTime() {
         long now = System.currentTimeMillis();
         Date date = new Date(now);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
         String getTime = dateFormat.format(date);
         return getTime; }
 
@@ -58,7 +58,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 //            sendNotification(message);
             String a = "";
-            manager.arlam(list,a,getTime(),remoteMessage.getData().toString());
+            String str = "";
+        if (remoteMessage.getData().toString().contains("1")) {
+            str = "아이 뒤집기 감지되었습니다.";
+        }
+        else if (remoteMessage.getData().toString().contains("2")) {
+            str = "아이 움직임 감지되지 않았습니다.";
+        }
+            manager.arlam(list,a,getTime(),str);
             sendNotification(remoteMessage.getData().toString());
 
 
@@ -125,10 +132,16 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         message = messageBody;
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        String message = "";
+        if(messageBody.contains("1")){
+            message = "아이 뒤집기가 감지 되었습니다.";
+        }
+        else if (messageBody.contains("2")){
+            message = "아이 움직임을 확인해주세요.";
+        }
+
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
-
-
 
         String channelId = getString(R.string.default_notification_channel_id);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -136,7 +149,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle(" 새로운 알림이 도착했습니다 !")
-                        .setContentText(messageBody)
+                        .setContentText(message)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
                         .setContentIntent(pendingIntent);

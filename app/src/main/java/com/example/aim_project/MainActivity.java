@@ -73,7 +73,6 @@ private static final String TAG = "FMS";
 
                 String msg = getString(R.string.msg_token_fmt,token);
                 Log.d(TAG,msg);
-                Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
 
             }
         });
