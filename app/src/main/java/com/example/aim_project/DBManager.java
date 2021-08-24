@@ -220,5 +220,89 @@ public class DBManager {
         db.close();
     }
 
+    //-------------------------------------------------------------------------------------------//
+
+    // 다이어리 작성
+    public void diarywrite(String id,String date,String title,String contents){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("insert into baby_diary values('"+ id +"','"+ date +"','"+ title +"','"+ contents +"')");
+    }
+
+    // 다이어리 제목 불러오기
+    public String diary_select_title(String id,String date){
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select title from baby_diary where member_id = '"+id+"' and diary_date = '"+date+"'",null);
+        String str = "";
+
+
+        if(cursor.moveToNext()){
+            String title_str = cursor.getString(0);
+            str = title_str;
+        }
+        return str;
+    }
+
+    // 다이어리 전체 불러오기 id로 검색
+    public ArrayList<DiaryVO> diary_select_id(String id){
+
+        DiaryVO vo = null;
+        ArrayList<DiaryVO> list = new ArrayList<>();
+
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from baby_diary where member_id ='"+id+"'",null);
+
+        while(cursor.moveToNext()){
+
+            String u_id = cursor.getString(0);    // id
+            String u_date = cursor.getString(1);    // date
+            String u_title = cursor.getString(2);    // title
+            String u_contents = cursor.getString(3);    // contents
+
+            vo = new DiaryVO(u_id, u_date, u_title, u_contents);
+            list.add(vo);
+        }
+
+        return list;
+    }
+
+    // 다이어리 전체 불러오기2 id,date 로 검색
+    public ArrayList<DiaryVO> diary_select_id_date(String id, String date){
+
+        DiaryVO vo = null;
+        ArrayList<DiaryVO> list = new ArrayList<>();
+
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from baby_diary where member_id = '"+id+"' and diary_date = '"+date+"'",null);
+
+        while(cursor.moveToNext()){
+
+            String u_id = cursor.getString(0);    // id
+            String u_date = cursor.getString(1);    // date
+            String u_title = cursor.getString(2);    // title
+            String u_contents = cursor.getString(3);    // contents
+
+            vo = new DiaryVO(u_id, u_date, u_title, u_contents);
+            list.add(vo);
+        }
+
+        return list;
+    }
+
+
+    // 다이어리 수정
+    public void diaryUpdate(String id, String date, String t_title, String t_contents){   // 아이디를 최근 로그인한 아이디로 변경
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("update baby_diary set title ='"+t_title+"' , contents ='"+t_contents+"' where member_id = '"+id+"' and diary_date = '"+date+"'");
+        db.close();
+    }
+
+
+    // 다이어리 삭제
+    public void diaryDelete(String id, String date){   // 아이디를 최근 로그인한 아이디로 변경
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("delete from baby_diary where member_id = '"+id+"' and diary_date = '"+date+"'");
+        db.close();
+    }
+
 
 }

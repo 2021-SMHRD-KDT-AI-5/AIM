@@ -1,0 +1,86 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/con1"
+    android:layout_width="350dp"
+    android:layout_height="400dp"
+    android:layout_gravity="center"
+    android:background="#FAF1F1"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_delete2"
+        android:layout_width="136dp"
+        android:layout_height="40dp"
+        android:background="#A4F39696"
+        android:text="삭제"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/edt_write1"
+        app:layout_constraintTop_toBottomOf="@+id/edt_write1" />
+
+    <EditText
+        android:id="@+id/edt_write1"
+        android:layout_width="0dp"
+        android:layout_height="233dp"
+        android:layout_marginBottom="60dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:gravity="center|top|left"
+        android:hint="내용"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edt_title1"
+        app:layout_constraintStart_toStartOf="@+id/edt_title1"
+        app:layout_constraintTop_toBottomOf="@+id/edt_title1"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/edt_title1"
+        android:layout_width="320dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="제목"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView57" />
+
+    <Button
+        android:id="@+id/btn_ok2"
+        android:layout_width="136dp"
+        android:layout_height="40dp"
+        android:background="#A4F39696"
+        android:text="저장"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edt_write1"
+        app:layout_constraintTop_toBottomOf="@+id/edt_write1" />
+
+    <Button
+        android:id="@+id/btn_cancel2"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:background="#E6E0E0"
+        android:text="X"
+        android:textColor="#857B7B"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView57"
+        app:layout_constraintEnd_toEndOf="@+id/textView57"
+        app:layout_constraintTop_toTopOf="@+id/textView57" />
+
+    <TextView
+        android:id="@+id/textView57"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:background="#A4F39696"
+        android:gravity="center"
+        android:padding="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
