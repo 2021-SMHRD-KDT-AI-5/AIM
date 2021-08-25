@@ -1,11 +1,14 @@
 package com.example.aim_project;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -47,6 +50,8 @@ public class FragmentMyinfo extends Fragment {
     StringRequest StringRequest_selectBo; // 정보 조회
     StringRequest StringRequest_LicenseCheck;
 
+    Dialog dilaog01;
+
 
 
     @Override
@@ -74,6 +79,10 @@ public class FragmentMyinfo extends Fragment {
         img1 = view.findViewById(R.id.img1);
         img_aimlogo_m = view.findViewById(R.id.img_aimlogo_m);
         img_back_info = view.findViewById(R.id.img_back_info);
+
+        dilaog01 = new Dialog(getActivity());
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog01.setContentView(R.layout.dialog04_no_yes);
 
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
@@ -156,7 +165,8 @@ public class FragmentMyinfo extends Fragment {
         btn_4.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_4_).commit();
+                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_4_).commit();
+                showDialog01();
             }
         });
         btn_5.setOnClickListener(new View.OnClickListener() {   // FragmentMain 으로는 이동함
@@ -189,6 +199,35 @@ public class FragmentMyinfo extends Fragment {
 
 
         return view;
+    }
+
+    // dialog01을 디자인하는 함수
+    public void showDialog01() {
+        dilaog01.show();
+
+        TextView txt_chatgo;
+        txt_chatgo = dilaog01.findViewById(R.id.txt_chatgo);
+        txt_chatgo.setText("AIM 카카오톡 공식채널로 이동");
+
+
+        //취소
+        dilaog01.findViewById(R.id.btn_nope).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog01.dismiss();
+            }
+        });
+
+
+        //확인
+        dilaog01.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Introduce = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pf.kakao.com/_xhbkks"));
+                startActivity(Introduce);
+                dilaog01.dismiss();
+            }
+        });
     }
 
 }

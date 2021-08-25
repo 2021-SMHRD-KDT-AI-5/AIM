@@ -5,8 +5,8 @@
     android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF0E8"
-    tools:context=".FragmentMyinfo_2_noBo" >
+    android:background="#ffffff"
+    tools:context=".FragmentMyinfo_2_noBo">
 
     <ImageView
         android:id="@+id/img_backinfo"

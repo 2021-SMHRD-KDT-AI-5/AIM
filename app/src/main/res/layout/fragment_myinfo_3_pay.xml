@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF0E8"
-    tools:context=".FragmentMyinfo_3_pay" >
+    android:background="#ffffff"
+    tools:context=".FragmentMyinfo_3_pay">
 
     <ImageView
         android:id="@+id/img_backinfo3"
@@ -216,7 +216,7 @@
                 android:layout_height="39dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="180dp"
-                android:background="#FFFFFF"
+                android:background="#ffffff"
                 android:gravity="center|left"
                 android:scrollbarSize="19dp"
                 app:layout_constraintStart_toStartOf="parent"
