@@ -30,7 +30,6 @@ import java.util.Collections;
 
 public class FragmentDiary_1 extends Fragment {
     FragmentDiary_1 fragmentDiary_1;
-    FragmentCalendar fragmentCalendar;
     TextView tv_title;
     com.prolificinteractive.materialcalendarview.MaterialCalendarView calendarView;
     Button btn_write;
@@ -53,7 +52,6 @@ public class FragmentDiary_1 extends Fragment {
 
         calendarView = view.findViewById(R.id.calendarView);
         fragmentDiary_1 = new FragmentDiary_1();
-        fragmentCalendar = new FragmentCalendar();
         tv_title = view.findViewById(R.id.tv_title);
         btn_write = view.findViewById(R.id.btn_write);
 
@@ -193,14 +191,15 @@ public class FragmentDiary_1 extends Fragment {
                 draw[0] = date1;
                 draw_str = newDay;
 
-                tv_title.setText(manager.diary_select_title(u_id,newDay));
+                String str_title = manager.diary_select_title(u_id,newDay);
 
-                if(tv_title.getText().toString() != ""){
-                    btn_write.setText("작성글 확인");
-                }else{
+                if(str_title.equals("")){
+                    tv_title.setText("");
                     btn_write.setText("글 작성");
+                }else{
+                    tv_title.setText("제목 : "+str_title);
+                    btn_write.setText("작성글 확인");
                 }
-
 
             }
         });
