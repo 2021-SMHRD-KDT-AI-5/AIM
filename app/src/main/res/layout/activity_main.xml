@@ -19,17 +19,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#ffffff"
-        app:itemIconSize="26dp"
-        app:itemIconTint="@color/black"
+        app:itemIconSize="24dp"
+        app:itemIconTint="#ff7979"
         app:itemTextColor="#0C0C0C"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:menu="@menu/menulist"
 
-        />
+        app:menu="@menu/menulist" />
 
 
     <FrameLayout

@@ -4,17 +4,22 @@
     <item
         android:id="@+id/uq"
         android:icon="@drawable/cctv"
-        android:title="아이확인" />
+        android:title="아이확인"
+        android:fontFamily="@font/gothicssi_20"
+        />
     <item
         android:id="@+id/oneQue"
         android:icon="@drawable/sound"
+        android:fontFamily="@font/gothicssi_20"
         android:title="알림로그" />
     <item
         android:id="@+id/diary1"
         android:icon="@drawable/diary"
-        android:title="육아일지" />
+        android:fontFamily="@font/gothicssi_20"
+        android:title="육아일기" />
     <item
         android:id="@+id/chatbot"
         android:icon="@drawable/info"
+        android:fontFamily="@font/gothicssi_20"
         android:title="내정보" />
 </menu>
