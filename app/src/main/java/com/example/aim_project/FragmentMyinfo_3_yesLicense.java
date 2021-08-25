@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -38,9 +39,11 @@ public class FragmentMyinfo_3_yesLicense extends Fragment {
     StringRequest StringRequest_selectLicense;
     StringRequest StringRequest_deleteLicense;
     FragmentMyinfo_3_bye fragmentMyinfo_3_bye;
+    FragmentMyinfo fragmentMyinfo;
     String[] str = new String[3];
     Dialog dilaog01,dilaog02;
     String code ="n";
+    ImageView img_backinfo5;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,6 +57,8 @@ public class FragmentMyinfo_3_yesLicense extends Fragment {
         txt_LicenseType = view.findViewById(R.id.txt_LicenseType);
         btn_delete = view.findViewById(R.id.btn_delete);
         fragmentMyinfo_3_bye = new FragmentMyinfo_3_bye();
+        img_backinfo5 = view.findViewById(R.id.img_backinfo5);
+        fragmentMyinfo = new FragmentMyinfo();
 
         dilaog01 = new Dialog(getActivity());
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -232,6 +237,13 @@ public class FragmentMyinfo_3_yesLicense extends Fragment {
                 }else{
                     showDialog01();
                 }
+            }
+        });
+
+        img_backinfo5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
             }
         });
 

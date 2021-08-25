@@ -10,6 +10,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ import java.util.Map;
 public class FragmentMyinfo_5_ extends Fragment {
 
     Spinner spinner3;
-    TextView txt_logout,txt_delete_bo;
+    TextView txt_logout,txt_delete_bo,txt_delete_diary;
     RequestQueue requestQueue;
     StringRequest StringRequest_deleteBo; // 보험 정보 삭제
     CheckBox ck_remember_id,ck_autologin;
@@ -37,7 +38,9 @@ public class FragmentMyinfo_5_ extends Fragment {
     Boolean check2 = false;
     DBManager manager;
     String[] list = new String[3];
-    Dialog dilaog01,dilaog02,dilaog03;
+    Dialog dilaog01,dilaog02,dilaog03,dilaog04;
+    ImageView img_backinfo;
+    FragmentMyinfo fragmentMyinfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,9 +50,12 @@ public class FragmentMyinfo_5_ extends Fragment {
         spinner3 = view.findViewById(R.id.spinner3);
         txt_logout = view.findViewById(R.id.txt_logout);
         txt_delete_bo = view.findViewById(R.id.txt_delete_bo);
+        txt_delete_diary = view.findViewById(R.id.txt_delete_diary);
         ck_remember_id = view.findViewById(R.id.ck_remember_id);
         ck_autologin = view.findViewById(R.id.ck_autologin);
+        img_backinfo = view.findViewById(R.id.img_backinfo);
         manager = new DBManager(getActivity().getApplicationContext());
+        fragmentMyinfo = new FragmentMyinfo();
 
         dilaog01 = new Dialog(getActivity());       // Dialog 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
@@ -62,6 +68,10 @@ public class FragmentMyinfo_5_ extends Fragment {
         dilaog03 = new Dialog(getActivity());
         dilaog03.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dilaog03.setContentView(R.layout.dialog10_ins_no);
+
+        dilaog04 = new Dialog(getActivity());
+        dilaog04.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dilaog04.setContentView(R.layout.dialog08_ins_no_yes2);
 
 
         Intent it_login = getActivity().getIntent();
@@ -120,8 +130,9 @@ public class FragmentMyinfo_5_ extends Fragment {
         };
 
 
-        //////////////////////////////////////////////////////
-        //                      클릭이벤트                   //
+//---------------------------------------------------------------------------------//
+//                                  클릭이벤트
+
 
         txt_logout.setOnClickListener(new View.OnClickListener() {  // 로그아웃 버튼
             @Override
@@ -131,12 +142,23 @@ public class FragmentMyinfo_5_ extends Fragment {
                     }
         });
 
+
         txt_delete_bo.setOnClickListener(new View.OnClickListener() {  // 보험정보 초기화 버튼
             @Override
             public void onClick(View v) {
                 showDialog01();
             }
         });
+
+
+
+        txt_delete_diary.setOnClickListener(new View.OnClickListener() {    // 다이어리 초기화 버튼
+            @Override
+            public void onClick(View v) {
+                showDialog04(u_id);
+            }
+        });
+
 
         ck_remember_id.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,9 +186,20 @@ public class FragmentMyinfo_5_ extends Fragment {
             }
         });
 
+        img_backinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo).commit();
+            }
+        });
+
+
         return view;
 
     }
+
+
+// -------------------------------------- 다이얼로그 ---------------------------------------//
 
     // dialog01을 디자인하는 함수
     public void showDialog01() {
@@ -214,5 +247,32 @@ public class FragmentMyinfo_5_ extends Fragment {
             }
         });
     }
+
+    public void showDialog04(String u_id) {
+        dilaog04.show();
+
+        TextView txt_really;
+        txt_really = dilaog04.findViewById(R.id.txt_really);
+        txt_really.setText("다이어리를 초기화 하시겠습니까?");
+
+        dilaog04.findViewById(R.id.btn_nope).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dilaog04.dismiss();          // 다이얼로그 닫기
+            }
+        });
+
+        dilaog04.findViewById(R.id.btn_yes_r2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                manager.diaryDeleteAll(u_id);
+                showDialog02();
+                dilaog04.dismiss();
+            }
+        });
+    }
+
+
 
 }

@@ -8,6 +8,17 @@
     android:background="#ffffff"
     tools:context=".FragmentDiary_1">
 
+
+    <ImageView
+        android:id="@+id/img_back_info2"
+        android:layout_width="65dp"
+        android:layout_height="29dp"
+        android:src="@drawable/reft"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.038" />
+
     <ImageView
         android:id="@+id/img_baby_profile"
         android:layout_width="228dp"
@@ -15,11 +26,9 @@
         android:src="@drawable/logomain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"

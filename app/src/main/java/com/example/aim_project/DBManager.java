@@ -304,5 +304,12 @@ public class DBManager {
         db.close();
     }
 
+    // 다이어리 전체 삭제
+    public void diaryDeleteAll(String id){   // 아이디를 최근 로그인한 아이디로 변경
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("delete from baby_diary where member_id = '"+id+"'");
+        db.close();
+    }
+
 
 }

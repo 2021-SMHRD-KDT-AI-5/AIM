@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -40,6 +41,8 @@ public class FragmentMyinfo_3_pay extends Fragment {
     RequestQueue requestQueue;
     StringRequest StringRequest_insertLicense;
     FragmentMyinfo_3_finish fragmentMyinfo_3_finish;
+    FragmentMyinfo fragmentMyinfo;
+    ImageView img_backinfo3;
     String str = "";
     Dialog dilaog01,dilaog02,dilaog03;
 
@@ -54,8 +57,10 @@ public class FragmentMyinfo_3_pay extends Fragment {
         ck2 = view.findViewById(R.id.ck2);
         ck3 = view.findViewById(R.id.ck3);
         fragmentMyinfo_3_finish = new FragmentMyinfo_3_finish();
+        fragmentMyinfo = new FragmentMyinfo();
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
+        img_backinfo3 = view.findViewById(R.id.img_backinfo3);
 
         dilaog01 = new Dialog(getActivity());
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -159,6 +164,14 @@ public class FragmentMyinfo_3_pay extends Fragment {
                     }
                 }
 
+            }
+        });
+
+
+        img_backinfo3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo).commit();
             }
         });
 

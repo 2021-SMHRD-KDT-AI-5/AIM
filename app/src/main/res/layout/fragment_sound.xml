@@ -18,7 +18,7 @@
         app:layout_constraintGuide_end="25dp" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/img_back_info2"
         android:layout_width="65dp"
         android:layout_height="29dp"
         android:src="@drawable/reft"

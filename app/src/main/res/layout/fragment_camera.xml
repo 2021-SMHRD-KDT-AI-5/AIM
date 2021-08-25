@@ -34,7 +34,7 @@
     </WebView>
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/img_back_info0"
         android:layout_width="65dp"
         android:layout_height="29dp"
         android:src="@drawable/reft"

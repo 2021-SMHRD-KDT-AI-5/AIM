@@ -199,7 +199,7 @@ public class FragmentMyinfo_1_ extends Fragment {
         img_backToMyInfo_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
             }
         });
 

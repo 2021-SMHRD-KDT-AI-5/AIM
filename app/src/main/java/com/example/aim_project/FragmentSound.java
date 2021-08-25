@@ -26,6 +26,7 @@ public class FragmentSound extends Fragment {
     ListView listView;
     DBHelper helper;
     DBManager manager;
+    ImageView img_back_info2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +39,7 @@ public class FragmentSound extends Fragment {
         ImageView img_logo = view.findViewById(R.id.img_logo);
         manager = new DBManager(getActivity().getApplicationContext());
         helper = new DBHelper(getActivity().getApplicationContext());
+        img_back_info2 = view.findViewById(R.id.img_back_info2);
 
         ArrayList<AlarmVO> data = new ArrayList<>();
 
@@ -59,6 +61,15 @@ public class FragmentSound extends Fragment {
 
             }
         });
+
+
+        img_back_info2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMain).commit();
+            }
+        });
+
         return view;
     }
 

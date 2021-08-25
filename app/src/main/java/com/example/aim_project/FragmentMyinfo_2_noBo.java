@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
 public class FragmentMyinfo_2_noBo extends Fragment {
 
     FragmentMyinfo_2_addBo fragmentMyinfo_2_addBo;
+    ImageView img_backinfo;
+    FragmentMyinfo fragmentMyinfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -22,6 +25,8 @@ public class FragmentMyinfo_2_noBo extends Fragment {
         Button btn_addBo = view.findViewById(R.id.btn_addBo);
         Button btn_intro_kidBo = view.findViewById(R.id.btn_intro_kidBo);
         fragmentMyinfo_2_addBo = new FragmentMyinfo_2_addBo();
+        img_backinfo = view.findViewById(R.id.img_backinfo);
+        fragmentMyinfo = new FragmentMyinfo();
 
 
         // 보험 등록 페이지
@@ -41,6 +46,14 @@ public class FragmentMyinfo_2_noBo extends Fragment {
 
                 Intent Introduce = new Intent(Intent.ACTION_VIEW, Uri.parse("https://direct.samsunglife.com/child.eds?cid=di:sli:child:menu/"));
                 startActivity(Introduce);
+
+            }
+        });
+
+        img_backinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
 
             }
         });

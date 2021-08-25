@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,9 +37,11 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
     Button btn_codeCheck, btn_codeCancel, btn_codeUse;
     TextView txt_codeCheck;
     FragmentMyinfo_3_finish fragmentMyinfo_3_finish;
+    FragmentMyinfo fragmentMyinfo;
     RequestQueue requestQueue;
     StringRequest StringRequest_insertLicense;
     Dialog dilaog01,dilaog02;
+    ImageView img_backinfo4;
 
     // 정액권 코드 정의
     String[] codepo1 = {"000000"};                         // 코드입력 첫번째칸
@@ -60,7 +63,9 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
         btn_codeCheck = view.findViewById(R.id.btn_codeCheck);
         btn_codeCancel = view.findViewById(R.id.btn_codeCancel);
         btn_codeUse = view.findViewById(R.id.btn_codeUse);
+        img_backinfo4 = view.findViewById(R.id.img_backinfo4);
         fragmentMyinfo_3_finish = new FragmentMyinfo_3_finish();
+        fragmentMyinfo = new FragmentMyinfo();
 
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
@@ -175,6 +180,14 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
                 }
             }
         });
+
+        img_backinfo4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
+            }
+        });
+
 
         return view;
     }

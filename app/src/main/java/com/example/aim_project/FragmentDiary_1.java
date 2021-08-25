@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import java.util.Collections;
 
 public class FragmentDiary_1 extends Fragment {
     FragmentDiary_1 fragmentDiary_1;
+    FragmentMain fragmentMain;
     TextView tv_title;
     com.prolificinteractive.materialcalendarview.MaterialCalendarView calendarView;
     Button btn_write;
@@ -42,6 +44,7 @@ public class FragmentDiary_1 extends Fragment {
     String draw_str = "";
     DBManager manager;
     Dialog dilaog01,dilaog02,dilaog03,dilaog04,dilaog05;
+    ImageView img_back_info2;
 
 
     @Override
@@ -52,8 +55,10 @@ public class FragmentDiary_1 extends Fragment {
 
         calendarView = view.findViewById(R.id.calendarView);
         fragmentDiary_1 = new FragmentDiary_1();
+        fragmentMain = new FragmentMain();
         tv_title = view.findViewById(R.id.tv_title);
         btn_write = view.findViewById(R.id.btn_write);
+        img_back_info2 = view.findViewById(R.id.img_back_info2);
 
         dilaog01 = new Dialog(getActivity());
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -107,7 +112,6 @@ public class FragmentDiary_1 extends Fragment {
             );
         }
 
-
 //------------------------------------------ 다이얼로그 종료 되었을경우 ----------------------------------------------------//
 
         // 작성했을때
@@ -119,7 +123,7 @@ public class FragmentDiary_1 extends Fragment {
 
                 String title = manager.diary_select_title(u_id,draw_str);
 
-                tv_title.setText(title);
+                tv_title.setText("제목 : "+title);
 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 CalendarDay date_1 = null;
@@ -154,7 +158,7 @@ public class FragmentDiary_1 extends Fragment {
                     e.printStackTrace();
                 }
                 calendarView.addDecorators(
-                        new Decorator_Event(Color.rgb(255,240,232), Collections.singleton(date_2))
+                        new Decorator_Event(Color.WHITE, Collections.singleton(date_2))
                 );
 
 
@@ -236,6 +240,13 @@ public class FragmentDiary_1 extends Fragment {
                     showDialog02(id,date,title,contents);
                 }
 
+            }
+        });
+
+        img_back_info2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMain).commit();
             }
         });
 
