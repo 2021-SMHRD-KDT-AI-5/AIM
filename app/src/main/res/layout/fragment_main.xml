@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF0E8"
+    android:background="#ffffff"
     tools:context=".FragmentMain">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,7 +13,10 @@
         android:id="@+id/imageView10"
         android:layout_width="228dp"
         android:layout_height="148dp"
+        android:fontFamily="@font/gothicssi_20"
+
         android:src="@drawable/logomain"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -30,9 +33,12 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:fontFamily="@font/gothicssi_20"
         android:gravity="center"
         android:text="팁 나오는 곳"
+
         android:textSize="15dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +49,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:fontFamily="@font/gothicssi_20"
+
         android:gravity="center"
+
         android:text="우리 아이와 함께한지"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +64,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/gothicssi_20"
+
         android:gravity="center"
+
         android:text="D+135"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -64,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_meet" />
 
-<!--    <ImageView
+    <!--    <ImageView
         android:id="@+id/img_parent_profile"
         android:layout_width="180dp"
         android:layout_height="180dp"
@@ -101,18 +113,18 @@
             tools:srcCompat="@drawable/parents" />
     </androidx.cardview.widget.CardView>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/img_baby_profile"-->
-<!--        android:layout_width="180dp"-->
-<!--        android:layout_height="180dp"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:src="@drawable/img2"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_dday"-->
-<!--        app:srcCompat="@drawable/baby"-->
-<!--        tools:srcCompat="@drawable/baby" />-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/img_baby_profile"-->
+    <!--        android:layout_width="180dp"-->
+    <!--        android:layout_height="180dp"-->
+    <!--        android:layout_marginTop="30dp"-->
+    <!--        android:layout_marginEnd="20dp"-->
+    <!--        android:layout_marginRight="20dp"-->
+    <!--        android:src="@drawable/img2"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/tv_dday"-->
+    <!--        app:srcCompat="@drawable/baby"-->
+    <!--        tools:srcCompat="@drawable/baby" />-->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardBackgroundView"
@@ -149,8 +161,11 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/gothicssi_20"
         android:text="그거 아셨나요?"
+
         android:textSize="20dp"
+
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

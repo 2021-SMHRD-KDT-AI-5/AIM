@@ -11,22 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.87" />
-
-
-
-
-
-
-
-
+        app:layout_constraintGuide_percent="0.9" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menubar"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#FFF0E8"
+        android:background="#ffffff"
         app:itemIconSize="26dp"
         app:itemIconTint="@color/black"
         app:itemTextColor="#0C0C0C"
@@ -40,14 +32,13 @@
         />
 
 
-
     <FrameLayout
         android:id="@+id/container2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#FFF0E8"
+        android:background="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
