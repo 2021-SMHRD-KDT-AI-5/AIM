@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/txt_chatgo"
         android:layout_width="264dp"
         android:layout_height="39dp"
         android:layout_marginTop="40dp"

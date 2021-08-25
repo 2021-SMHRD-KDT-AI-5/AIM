@@ -5,8 +5,8 @@
     android:id="@+id/frameLayout8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF0E8"
-    tools:context=".FragmentMyinfo_2_addBo" >
+    android:background="#ffffff"
+    tools:context=".FragmentMyinfo_2_addBo">
 
     <View
         android:id="@+id/textView74"

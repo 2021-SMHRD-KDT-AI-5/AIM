@@ -5,14 +5,14 @@
     android:id="@+id/frameLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF0E8"
-    tools:context=".FragmentMyinfo_1_" >
+    android:background="#ffffff"
+    tools:context=".FragmentMyinfo_1_">
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="368dp"
-        android:background="#F8EDED"
+        android:background="#6A6363"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,6 +24,7 @@
             android:id="@+id/scrollLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:paddingTop="30dp"
             android:paddingBottom="30dp">
 
