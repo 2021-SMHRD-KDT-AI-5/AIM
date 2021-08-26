@@ -244,11 +244,11 @@
 
             <TextView
                 android:id="@+id/textView26"
-                android:layout_width="158dp"
+                android:layout_width="100dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="328dp"
-                android:text="알림음,진동세기 조절"
+                android:text="알림음 조절"
                 android:textSize="17dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -337,6 +337,18 @@
                 android:gravity="center|left"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <SeekBar
+                android:id="@+id/seekBar2"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView28"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textView26"
+                app:layout_constraintTop_toTopOf="@+id/textView25"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

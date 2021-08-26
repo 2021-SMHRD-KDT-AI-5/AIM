@@ -2,7 +2,6 @@
 <resources>
 
     <string-array name="test3">
-        <item> 알림형태 </item>
         <item> 푸시 </item>
         <item> 음성 </item>
         <item> 진동 </item>
