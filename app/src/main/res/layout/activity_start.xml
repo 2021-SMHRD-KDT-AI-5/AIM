@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF0E8"
+    android:background="#FFFfff"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -39,7 +39,7 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:shadowColor="#FFFFFF"
-        android:text="육아가 쉬워지는 날까지"
+        android:text="육아에 AI를 더하다"
         android:textColor="#FF8585"
         android:textSize="30dp"
         android:textStyle="bold"

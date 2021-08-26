@@ -5,15 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
 public class FragmentMyinfo_3_noLicense extends Fragment {
 
     Button btn_buyLicense,btn_enterCode;
+    ImageView img_backinfo;
 
     FragmentMyinfo_3_enterCode fragmentMyinfo_3_enterCode;
     FragmentMyinfo_3_pay fragmentMyinfo_3_pay;
+    FragmentMyinfo fragmentMyinfo;
 
 
     @Override
@@ -25,6 +28,8 @@ public class FragmentMyinfo_3_noLicense extends Fragment {
         btn_enterCode = view.findViewById(R.id.btn_enterCode);
         fragmentMyinfo_3_enterCode = new FragmentMyinfo_3_enterCode();
         fragmentMyinfo_3_pay = new FragmentMyinfo_3_pay();
+        img_backinfo = view.findViewById(R.id.img_backinfo);
+        fragmentMyinfo = new FragmentMyinfo();
 
 
 
@@ -39,6 +44,13 @@ public class FragmentMyinfo_3_noLicense extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_3_pay).commit();
+            }
+        });
+
+        img_backinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
             }
         });
 

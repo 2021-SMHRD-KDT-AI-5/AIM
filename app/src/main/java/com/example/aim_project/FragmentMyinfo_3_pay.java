@@ -41,7 +41,7 @@ public class FragmentMyinfo_3_pay extends Fragment {
     RequestQueue requestQueue;
     StringRequest StringRequest_insertLicense;
     FragmentMyinfo_3_finish fragmentMyinfo_3_finish;
-    FragmentMyinfo fragmentMyinfo;
+    FragmentMyinfo_3_noLicense fragmentMyinfo_3_noLicense;
     ImageView img_backinfo3;
     String str = "";
     Dialog dilaog01,dilaog02,dilaog03;
@@ -57,7 +57,7 @@ public class FragmentMyinfo_3_pay extends Fragment {
         ck2 = view.findViewById(R.id.ck2);
         ck3 = view.findViewById(R.id.ck3);
         fragmentMyinfo_3_finish = new FragmentMyinfo_3_finish();
-        fragmentMyinfo = new FragmentMyinfo();
+        fragmentMyinfo_3_noLicense = new FragmentMyinfo_3_noLicense();
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
         img_backinfo3 = view.findViewById(R.id.img_backinfo3);
@@ -171,7 +171,7 @@ public class FragmentMyinfo_3_pay extends Fragment {
         img_backinfo3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragmentMyinfo_3_noLicense).commit();
             }
         });
 

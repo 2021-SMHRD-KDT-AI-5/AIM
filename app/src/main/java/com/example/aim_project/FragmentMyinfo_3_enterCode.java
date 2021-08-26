@@ -37,7 +37,7 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
     Button btn_codeCheck, btn_codeCancel, btn_codeUse;
     TextView txt_codeCheck;
     FragmentMyinfo_3_finish fragmentMyinfo_3_finish;
-    FragmentMyinfo fragmentMyinfo;
+    FragmentMyinfo_3_noLicense fragmentMyinfo_3_noLicense;
     RequestQueue requestQueue;
     StringRequest StringRequest_insertLicense;
     Dialog dilaog01,dilaog02;
@@ -65,7 +65,7 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
         btn_codeUse = view.findViewById(R.id.btn_codeUse);
         img_backinfo4 = view.findViewById(R.id.img_backinfo4);
         fragmentMyinfo_3_finish = new FragmentMyinfo_3_finish();
-        fragmentMyinfo = new FragmentMyinfo();
+        fragmentMyinfo_3_noLicense = new FragmentMyinfo_3_noLicense();
 
         Intent it_login = getActivity().getIntent();
         String u_id = it_login.getStringExtra("loginId");
@@ -184,7 +184,14 @@ public class FragmentMyinfo_3_enterCode extends Fragment {
         img_backinfo4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_3_noLicense).commit();
+            }
+        });
+
+        btn_codeCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo_3_noLicense).commit();
             }
         });
 

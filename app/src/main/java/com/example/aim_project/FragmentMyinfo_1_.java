@@ -182,7 +182,6 @@ public class FragmentMyinfo_1_ extends Fragment {
         change_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"수정을 취소합니다",Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragmentMyinfo).commit();
             }
         });
