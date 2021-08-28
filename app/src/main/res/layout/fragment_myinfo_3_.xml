@@ -47,28 +47,30 @@
         android:id="@+id/btn_buyLicense"
         android:layout_width="130dp"
         android:layout_height="51dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/solid_button"
         android:text="정액권 구입"
         android:textColor="#5E4949"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/txt_main2"
+        app:layout_constraintTop_toBottomOf="@+id/txt_main2" />
 
     <Button
         android:id="@+id/btn_enterCode"
         android:layout_width="130dp"
         android:layout_height="51dp"
-        android:layout_marginStart="216dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/solid_button"
         android:text="코드입력"
         android:textColor="#5E4949"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/txt_main2"
+        app:layout_constraintTop_toBottomOf="@+id/txt_main2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
